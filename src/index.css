@@ -2,3 +2,13 @@ body {
   margin: 0;
   font-family: 'Work Sans', sans-serif;
 }
+
+.my-masonry-grid {
+  display: flex;
+  margin-left: -30px;
+  width: auto;
+}
+.my-masonry-grid_column {
+  padding-left: 30px;
+  background-clip: padding-box;
+}

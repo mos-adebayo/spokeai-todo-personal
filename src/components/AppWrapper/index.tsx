@@ -4,7 +4,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 type Props = {
     children: React.ReactElement,
 }
-const AppWrapper: React.FC<Props>  =({ children}) =>{
+const AppWrapper: React.FC<Props> = ({ children}) =>{
     return(
         <Container>
             <Row>
