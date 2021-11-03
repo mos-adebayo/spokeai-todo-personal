@@ -11,7 +11,7 @@ const AppRouter: FC<Props> = ({ Router }: Props) => (
     <Switch>
       <Route exact path="/" component={Screens.Home} />
       <Route exact path="/todo/:id" component={Screens.TodoItem} />
-       <Redirect to="/" />
+      <Redirect to="/" />
     </Switch>
   </Router>
 );

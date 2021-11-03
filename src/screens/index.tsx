@@ -1,6 +1,3 @@
-import Home from "./Home";
-import TodoItem from "./TodoItem";
-export {
-    Home,
-    TodoItem
-}
+import Home from './Home';
+import TodoItem from './TodoItem';
+export { Home, TodoItem };
