@@ -1,12 +1,12 @@
 import React, { FC } from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import {Switch, Route, Redirect } from 'react-router-dom';
 import * as Screens from '../../screens';
 
 interface Props {
   Router: any;
 }
 
-const AppRouter: FC<Props> = ({ Router }: Props) => (
+const AppRouter: FC<Props> = ({ Router }) => (
   <Router>
     <Switch>
       <Route exact path="/" component={Screens.Home} />
