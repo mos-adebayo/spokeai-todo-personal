@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
   margin-bottom: 15px;
 `;
 
-export const Title = styled.h3`
+export const Title = styled.h4`
 color: #49486c;
 `;
 
