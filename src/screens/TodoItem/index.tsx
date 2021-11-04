@@ -1,6 +1,6 @@
 import React from 'react';
 
-const TodoItem = () => {
+const TodoItem: React.FC  = () => {
   return (
     <div>
       <h2>TODO Title</h2>

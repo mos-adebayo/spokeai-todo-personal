@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {ChangeEvent, useState} from 'react';
 import { Form, InputGroup, FormControl } from 'react-bootstrap';
 import { FormWrapper } from './styles';
 
@@ -20,7 +20,7 @@ const CreateToDo: React.FC = () => {
     }
   ]);
 
-  const handleChange = (e: any, item: TaskType, index: number) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, item: TaskType, index: number) => {
     const newItems = [...items];
     newItems[index] = {
       ...items[index],
@@ -39,7 +39,7 @@ const CreateToDo: React.FC = () => {
     setItems(newItems);
   };
 
-  const handleTitleChange = (e: any) => {
+  const handleTitleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setTitle(e.target.value);
     if (!isStarted) {
       setIsStarted(true);
