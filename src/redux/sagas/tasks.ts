@@ -20,7 +20,7 @@ function* fetchTasksSaga() {
     }
 }
 
-function* tasksSaga() {
+function* tasksSaga():any {
     yield all([takeLatest(FETCH_TASKS_REQUEST, fetchTasksSaga)])
 }
 
