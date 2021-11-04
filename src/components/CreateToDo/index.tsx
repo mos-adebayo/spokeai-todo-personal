@@ -1,26 +1,26 @@
-import React, {ChangeEvent, useState} from 'react';
+import React, {ChangeEvent, useState, useEffect} from 'react';
 import { Form, InputGroup, FormControl } from 'react-bootstrap';
 import {AddButton, FormWrapper} from './styles';
-
-type TaskType = {
-  isChecked: boolean;
-  description: string;
-  isDirty: boolean;
-};
+import {useDispatch, useSelector} from "react-redux";
+import {RootState} from "../../redux/reducers/rootReducers";
+import {createTaskRequest} from "../../redux/actions/taskActions";
 
 const CreateToDo: React.FC = () => {
+  const dispatch = useDispatch();
+  const { loading, isCreated } = useSelector((state: RootState) => state.tasks)
+
   const [titlePlaceholder, setTitlePlaceholder] = useState('Add new task...');
   const [isStarted, setIsStarted] = useState(false);
   const [title, setTitle] = useState('');
-  const [items, setItems] = useState<TaskType[]>([
+  const [items, setItems] = useState<ActionItemPayloadType[]>([
     {
-      isChecked: false,
+      isDone: false,
       description: '',
       isDirty: false
     }
   ]);
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, item: TaskType, index: number) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, item: ActionItemPayloadType, index: number) => {
     const newItems = [...items];
     newItems[index] = {
       ...items[index],
@@ -30,7 +30,7 @@ const CreateToDo: React.FC = () => {
 
     if (!item.isDirty) {
       newItems.push({
-        isChecked: false,
+        isDone: false,
         description: '',
         isDirty: false
       });
@@ -55,8 +55,29 @@ const CreateToDo: React.FC = () => {
   };
 
   const handleSubmit = () => {
-   console.log('Form', items, title);
+    const actualItems = items.map(({isDone, description}) =>({ isDone, description}))
+    actualItems.pop();
+    const payload = { id: new Date().getTime(), title: title, items: actualItems}
+    dispatch(createTaskRequest(payload))
   };
+
+  const resetForm = () => {
+    setIsStarted(false);
+    setTitle('');
+    setItems([
+      {
+        isDone: false,
+        description: '',
+        isDirty: false
+      }
+    ])
+  };
+
+  useEffect(() => {
+    if(isCreated && isStarted) {
+      resetForm();
+    }
+  }, [isCreated])
 
   return (
     <FormWrapper>
@@ -70,7 +91,7 @@ const CreateToDo: React.FC = () => {
               onBlur={() => handleTitleFocus(false)}
               onChange={handleTitleChange}
           />
-          <AddButton disabled={!isStarted} onClick={handleSubmit}>
+          <AddButton disabled={!isStarted || loading} onClick={handleSubmit}>
             Save
           </AddButton>
         </InputGroup>
@@ -78,7 +99,7 @@ const CreateToDo: React.FC = () => {
         {isStarted &&
           items.map((item, index) => (
             <InputGroup className="mb-1" key={index}>
-              <InputGroup.Checkbox checked={item.isChecked} />
+              <InputGroup.Checkbox checked={item.isDone} />
               <FormControl
                 value={item.description}
                 placeholder="Add Task"

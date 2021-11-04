@@ -16,19 +16,13 @@ const breakpointColumnsObj = {
 
 const Home: React.FC = () => {
   const dispatch = useDispatch();
-  const { loading, tasks, error } = useSelector((state: RootState) => state.tasks)
+  const { tasks } = useSelector((state: RootState) => state.tasks)
 
   useEffect(() => {
     dispatch(fetchTasksRequest());
   }, []);
 
-  console.log(loading, tasks, error, "Reducx connected");
-
-  const items = new Array(15).fill({
-    title: 'Home',
-    content:
-      'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae eius minima ut. Adipisci assumenda cupiditate dolorum eaque eius iusto, laboriosam minus placeat rem sunt ut voluptatibus. Ad delectus eos provident quisquam. A adipisci beatae cupiditate eligendi facere harum labore magni, minima nihil nobis quod recusandae repellendus similique tempore voluptas voluptates.'
-  });
+  console.log(tasks, 'tasks');
 
   return (
     <AppWrapper>
@@ -39,8 +33,8 @@ const Home: React.FC = () => {
           columnClassName="my-masonry-grid_column"
           breakpointCols={breakpointColumnsObj}
         >
-          {items.map((item: TodoItemType) => (
-            <TodoItem title={item.title} content={item.content} key={item.id} />
+          {tasks.map((item: TaskItemType) => (
+            <TodoItem title={item.title} key={item.id} />
           ))}
         </Masonry>
       </React.Fragment>
