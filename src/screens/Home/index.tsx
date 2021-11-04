@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Masonry from 'react-masonry-css';
 import AppWrapper from '../../components/AppWrapper';
 import TodoItem from '../../components/TodoItem';
 import CreateToDo from '../../components/CreateToDo';
+import {RootState} from "../../redux/reducers/rootReducers";
+import {fetchTasksRequest} from "../../redux/actions/taskActions";
 
 const breakpointColumnsObj = {
   default: 4,
@@ -12,6 +15,15 @@ const breakpointColumnsObj = {
 };
 
 const Home: React.FC = () => {
+  const dispatch = useDispatch();
+  const { loading, tasks, error } = useSelector((state: RootState) => state.tasks)
+
+  useEffect(() => {
+    dispatch(fetchTasksRequest());
+  }, []);
+
+  console.log(loading, tasks, error, "Reducx connected");
+
   const items = new Array(15).fill({
     title: 'Home',
     content:
