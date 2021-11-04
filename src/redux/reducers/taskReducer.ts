@@ -9,8 +9,7 @@ import {
 const initialState: TasksStateType = {
     tasks: [],
     loading: false,
-    error: null,
-    isCreated: false,
+    error: null
 }
 
 export default (state = initialState, action: TaskActionType): TasksStateType => {
@@ -37,16 +36,14 @@ export default (state = initialState, action: TaskActionType): TasksStateType =>
         case CREATE_TASK_REQUEST:
             return {
                 ...state,
-                loading: true,
-                isCreated: false
+                loading: true
             }
         case CREATE_TASK_SUCCESS:
             return {
                 ...state,
                 loading: false,
                 tasks: action.newTask ? [action.newTask, ...state.tasks] : state.tasks,
-                error: null,
-                isCreated: true
+                error: null
             }
         default:
             return {

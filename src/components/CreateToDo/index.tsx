@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useState, useEffect} from 'react';
+import React, {ChangeEvent, useState } from 'react';
 import { Form, InputGroup, FormControl } from 'react-bootstrap';
 import {AddButton, FormWrapper} from './styles';
 import {useDispatch, useSelector} from "react-redux";
@@ -7,7 +7,7 @@ import {createTaskRequest} from "../../redux/actions/taskActions";
 
 const CreateToDo: React.FC = () => {
   const dispatch = useDispatch();
-  const { loading, isCreated } = useSelector((state: RootState) => state.tasks)
+  const { loading } = useSelector((state: RootState) => state.tasks)
 
   const [titlePlaceholder, setTitlePlaceholder] = useState('Add new task...');
   const [isStarted, setIsStarted] = useState(false);
@@ -20,11 +20,12 @@ const CreateToDo: React.FC = () => {
     }
   ]);
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, item: ActionItemPayloadType, index: number) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | any>, item: ActionItemPayloadType, index: number) => {
     const newItems = [...items];
+    const value = e.target.name === 'isDone' ? e.target.checked : e.target.value;
     newItems[index] = {
       ...items[index],
-      description: e.target.value,
+      [e.target.name]: value,
       isDirty: true
     };
 
@@ -54,13 +55,6 @@ const CreateToDo: React.FC = () => {
     setTitlePlaceholder(isFocus ? 'Title' : 'Add new task . . .');
   };
 
-  const handleSubmit = () => {
-    const actualItems = items.map(({isDone, description}) =>({ isDone, description}))
-    actualItems.pop();
-    const payload = { id: new Date().getTime(), title: title, items: actualItems}
-    dispatch(createTaskRequest(payload))
-  };
-
   const resetForm = () => {
     setIsStarted(false);
     setTitle('');
@@ -73,11 +67,13 @@ const CreateToDo: React.FC = () => {
     ])
   };
 
-  useEffect(() => {
-    if(isCreated && isStarted) {
-      resetForm();
-    }
-  }, [isCreated])
+  const handleSubmit = () => {
+    const actualItems = items.map(({isDone, description}) =>({ isDone, description}))
+    actualItems.pop();
+    const payload = { id: new Date().getTime(), title: title, items: actualItems}
+    dispatch(createTaskRequest(payload))
+    resetForm();
+  };
 
   return (
     <FormWrapper>
@@ -99,9 +95,10 @@ const CreateToDo: React.FC = () => {
         {isStarted &&
           items.map((item, index) => (
             <InputGroup className="mb-1" key={index}>
-              <InputGroup.Checkbox checked={item.isDone} />
+              <InputGroup.Checkbox checked={item.isDone} name="isDone" onChange={(e: any) => handleChange(e, item, index)} />
               <FormControl
                 value={item.description}
+                name="description"
                 placeholder="Add Task"
                 onChange={(e) => handleChange(e, item, index)}
               />

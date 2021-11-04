@@ -22,8 +22,6 @@ const Home: React.FC = () => {
     dispatch(fetchTasksRequest());
   }, []);
 
-  console.log(tasks, 'tasks');
-
   return (
     <AppWrapper>
       <React.Fragment>

@@ -1,7 +1,6 @@
 type TasksStateType = {
     tasks: TodoItemType[],
     loading: boolean,
-    isCreated: boolean,
     error: string | null,
 }
 
