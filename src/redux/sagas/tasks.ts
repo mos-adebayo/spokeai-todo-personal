@@ -1,4 +1,4 @@
-// import axios from "axios";
+import axios from "axios";
 import { all, call, put, takeLatest } from "redux-saga/effects";
 import {
     createTaskRequestFailure,
@@ -6,17 +6,14 @@ import {
     fetchTasksRequestFailure,
     fetchTasksRequestSuccess
 } from "../actions/taskActions";
-import {CREATE_TASK_REQUEST, FETCH_TASKS_REQUEST} from "../../util/constants";
+import {API_BASE_URL, CREATE_TASK_REQUEST, FETCH_TASKS_REQUEST} from "../../util/constants";
 import {AxiosResponse} from "axios";
 
-//TODO Move to separate file
 const getTasksAPI = () => {
-    // axios.get<TodoItemType[]>("utle here")
-    return {data: []}
+    return axios.get<TaskItemType[]>(`${API_BASE_URL}/tasks`)
 };
 const createTaskAPI = (payload: TaskItemType) => {
-    // axios.get<TodoItemType[]>("utle here")
-    return {data: payload}
+    return axios.post<TaskItemType>(`${API_BASE_URL}/tasks`, payload)
 };
 
 function* fetchTasksSaga() {
