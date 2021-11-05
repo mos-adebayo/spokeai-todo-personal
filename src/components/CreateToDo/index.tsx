@@ -1,5 +1,5 @@
 import React, {ChangeEvent, useState } from 'react';
-import { Form, InputGroup, FormControl } from 'react-bootstrap';
+import { Form, InputGroup, FormControl, Offcanvas } from 'react-bootstrap';
 import {AddButton, FormWrapper} from './styles';
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../redux/reducers/rootReducers";
@@ -75,6 +75,10 @@ const CreateToDo: React.FC = () => {
     resetForm();
   };
 
+  const handleClose = () => {
+    resetForm();
+  };
+
   return (
     <FormWrapper>
       <Form>
@@ -87,24 +91,41 @@ const CreateToDo: React.FC = () => {
               onBlur={() => handleTitleFocus(false)}
               onChange={handleTitleChange}
           />
-          <AddButton disabled={!isStarted || loading} onClick={handleSubmit}>
-            Save
-          </AddButton>
         </InputGroup>
+      </Form>
 
-        {isStarted &&
-          items.map((item, index) => (
-            <InputGroup className="mb-1" key={index}>
-              <InputGroup.Checkbox checked={item.isDone} name="isDone" onChange={(e: any) => handleChange(e, item, index)} />
-              <FormControl
+      <Offcanvas show={isStarted} onHide={handleClose} placement="end">
+        <Offcanvas.Header closeButton>
+          <Offcanvas.Title>Add Task</Offcanvas.Title>
+        </Offcanvas.Header>
+        <Offcanvas.Body>
+          <InputGroup className="mb-2">
+            <Form.Control
+                value={title}
+                type="text"
+                placeholder={titlePlaceholder}
+                onFocus={() => handleTitleFocus(true)}
+                onBlur={() => handleTitleFocus(false)}
+                onChange={handleTitleChange}
+            />
+            <AddButton disabled={!isStarted || loading} onClick={handleSubmit}>
+              Save
+            </AddButton>
+          </InputGroup>
+
+          {items.map((item, index) => (
+          <InputGroup className="mb-1" key={index}>
+            <InputGroup.Checkbox checked={item.isDone} name="isDone" onChange={(e: any) => handleChange(e, item, index)} />
+            <FormControl
                 value={item.description}
                 name="description"
                 placeholder="Add Task"
                 onChange={(e) => handleChange(e, item, index)}
-              />
-            </InputGroup>
+            />
+          </InputGroup>
           ))}
-      </Form>
+        </Offcanvas.Body>
+      </Offcanvas>
     </FormWrapper>
   );
 };

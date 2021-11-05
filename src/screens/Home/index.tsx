@@ -4,6 +4,8 @@ import Masonry from 'react-masonry-css';
 import AppWrapper from '../../components/AppWrapper';
 import TodoItem from '../../components/TodoItem';
 import CreateToDo from '../../components/CreateToDo';
+import Loader from '../../components/Loader';
+
 import {RootState} from "../../redux/reducers/rootReducers";
 import {fetchTasksRequest} from "../../redux/actions/taskActions";
 
@@ -26,6 +28,9 @@ const Home: React.FC = () => {
     <AppWrapper>
       <React.Fragment>
         <CreateToDo />
+
+        <Loader />
+
         <Masonry
           className="my-masonry-grid"
           columnClassName="my-masonry-grid_column"

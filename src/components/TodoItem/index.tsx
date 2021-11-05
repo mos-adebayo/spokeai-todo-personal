@@ -12,8 +12,8 @@ const TodoItem: React.FC<Props> = ({ todo }) => {
   const [status, setStatus] = useState("danger");
 
   useEffect(() => {
-      const completedItems = todo.items.filter(item =>item.isDone);
-      const progressPercentage = Math.ceil((completedItems.length / todo.items.length) * 100);
+      const completedItems = todo.items.filter(item =>item.isDone).length;
+      const progressPercentage = completedItems === 0 ? 0 : Math.ceil((completedItems / todo.items.length) * 100);
       setProgress(progressPercentage);
   }, [todo]);
 
@@ -24,7 +24,10 @@ const TodoItem: React.FC<Props> = ({ todo }) => {
   return (
     <Wrapper>
       <Title>{todo.title}</Title>
-        <ProgressBar striped now={progress} variant={status} label={`${progress}%`} />
+        {
+            todo.items.length > 0 && <ProgressBar striped now={progress} variant={status} label={`${progress}%`} />
+        }
+
         {
             todo.items.map((item, key) => <div key={key}>
                 <Form.Check type="checkbox" defaultChecked={item.isDone} label={item.description} />
