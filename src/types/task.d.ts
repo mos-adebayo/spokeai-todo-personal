@@ -10,5 +10,5 @@ type ActionItemPayloadType = ActionItemType & {
 type TaskItemType = {
   id: number;
   title: string;
-  items?: ActionItemType[];
+  items: ActionItemType[];
 };

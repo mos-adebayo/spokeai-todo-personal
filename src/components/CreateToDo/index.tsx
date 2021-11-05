@@ -68,8 +68,8 @@ const CreateToDo: React.FC = () => {
   };
 
   const handleSubmit = () => {
-    const actualItems = items.map(({isDone, description}) =>({ isDone, description}))
-    actualItems.pop();
+    const actualItems = items.filter(({description}) => description)
+                             .map(({description,isDone}) => ({isDone, description}));
     const payload = { id: new Date().getTime(), title: title, items: actualItems}
     dispatch(createTaskRequest(payload))
     resetForm();

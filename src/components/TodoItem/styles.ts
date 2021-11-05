@@ -10,8 +10,7 @@ export const Wrapper = styled.div`
 
 export const Title = styled.h4`
   color: #49486c;
-`;
-
-export const Text = styled.p`
-  color: #49486c;
+  &:first-letter {
+    text-transform: uppercase;
+  }
 `;

@@ -10,7 +10,7 @@ import {API_BASE_URL, CREATE_TASK_REQUEST, FETCH_TASKS_REQUEST} from "../../util
 import {AxiosResponse} from "axios";
 
 const getTasksAPI = () => {
-    return axios.get<TaskItemType[]>(`${API_BASE_URL}/tasks`)
+    return axios.get<TaskItemType[]>(`${API_BASE_URL}/tasks?_order=asc`)
 };
 const createTaskAPI = (payload: TaskItemType) => {
     return axios.post<TaskItemType>(`${API_BASE_URL}/tasks`, payload)

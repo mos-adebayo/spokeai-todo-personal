@@ -32,7 +32,7 @@ const Home: React.FC = () => {
           breakpointCols={breakpointColumnsObj}
         >
           {tasks.map((item: TaskItemType) => (
-            <TodoItem title={item.title} key={item.id} />
+            <TodoItem todo={item} key={item.id} />
           ))}
         </Masonry>
       </React.Fragment>

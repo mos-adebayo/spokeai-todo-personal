@@ -1,17 +1,35 @@
-import React from 'react';
-import { Text, Title, Wrapper } from './styles';
+import React, { useState, useEffect } from 'react';
+import { Title, Wrapper } from './styles';
+import { Form, ProgressBar } from "react-bootstrap";
+import {getProgressStatus} from "../../util/helper";
 
 type Props = {
-  title: string;
+    todo: TaskItemType;
 };
 
-const TodoItem: React.FC<Props> = ({ title}) => {
+const TodoItem: React.FC<Props> = ({ todo }) => {
+  const [progress, setProgress] = useState(0);
+  const [status, setStatus] = useState("danger");
+
+  useEffect(() => {
+      const completedItems = todo.items.filter(item =>item.isDone);
+      const progressPercentage = Math.ceil((completedItems.length / todo.items.length) * 100);
+      setProgress(progressPercentage);
+  }, [todo]);
+
+  useEffect(() => {
+      setStatus(getProgressStatus(progress))
+  }, [progress]);
+
   return (
     <Wrapper>
-      <Title>{title}</Title>
-      <Text>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt dolor et expedita facere harum ipsa laborum maiores molestias necessitatibus, nihil nisi odio quis sit? Cumque iste non officiis provident quis.
-      </Text>
+      <Title>{todo.title}</Title>
+        <ProgressBar striped now={progress} variant={status} label={`${progress}%`} />
+        {
+            todo.items.map((item, key) => <div key={key}>
+                <Form.Check type="checkbox" defaultChecked={item.isDone} label={item.description} />
+            </div>)
+        }
     </Wrapper>
   );
 };
