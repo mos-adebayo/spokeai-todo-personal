@@ -7,6 +7,7 @@ export const Wrapper = styled.div`
   padding: 45px 20px;
   height: 100px;
   margin-bottom: 25px;
+  font-family: "Mochiy Pop One", sans-serif;
 
   ${gradientPrimaryBackground};
 `;

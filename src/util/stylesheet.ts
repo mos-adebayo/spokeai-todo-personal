@@ -7,3 +7,7 @@ export const gradientPrimaryBackground = css`
     rgb(75, 207, 187) 100%
   );
 `;
+
+export const boxShadow = css`
+  box-shadow: rgb(52 58 64 / 6%) 3px 1px 13px 0;
+`;

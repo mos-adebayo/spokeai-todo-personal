@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 
 import bgImage from "../../assets/images/bg-pattern.svg";
-import { gradientPrimaryBackground } from "../../util/stylesheet";
+import { boxShadow, gradientPrimaryBackground } from "../../util/stylesheet";
 
 const completedItemWrapper = css`
   ${gradientPrimaryBackground};
@@ -9,11 +9,11 @@ const completedItemWrapper = css`
 
 export const Wrapper = styled.div<{ completed?: boolean }>`
   border-radius: 12px;
-  box-shadow: rgb(166 171 189 / 20%) 0 10px 20px;
   padding: 15px 30px;
   margin-bottom: 15px;
   background: url(${bgImage}) #fff bottom right no-repeat;
 
+  ${boxShadow};
   ${({ completed }) => completed && completedItemWrapper};
 `;
 
@@ -22,14 +22,12 @@ export const HeaderWrapper = styled.div`
 `;
 
 export const Title = styled.h4`
-  color: #49486c;
   &:first-letter {
     text-transform: uppercase;
   }
 `;
 
 export const Text = styled.span`
-  color: #49486c;
   font-size: 15px;
 
   &:first-letter {
@@ -45,14 +43,14 @@ const checkedBox = css`
     height: 1rem;
     box-sizing: border-box;
     transform: rotate(40deg);
-    border: 0.1rem solid #49486c;
+    border: 0.1rem solid #283451;
     border-top: 0;
     border-left: 0;
   }
 `;
 
 export const CheckBox = styled.span<{ checked: boolean }>`
-  border: 1px solid #49486c;
+  border: 1px solid #283451;
   width: 1.5rem;
   height: 1.5rem;
   display: inline-block;
