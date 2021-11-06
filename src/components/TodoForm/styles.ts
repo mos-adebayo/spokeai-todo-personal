@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Button } from "react-bootstrap";
-import {CheckBox} from "../TodoItem/styles";
+import { CheckBox } from "../TodoItem/styles";
 
 export const AddButton = styled(Button)`
   &:focus {
@@ -48,7 +48,7 @@ export const FormWrapper = styled.div`
 
 export const ItemsWrapper = styled.div`
   margin-top: 15px;
-  
+
   .form-control {
     height: 1.5rem;
     border: none;
@@ -63,7 +63,7 @@ export const ItemWrapper = styled.div`
   ${CheckBox} {
     margin-right: 5px;
   }
-  
+
   &:first-of-type {
     border-top: 1px solid #dfdfdf;
   }

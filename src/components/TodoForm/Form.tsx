@@ -1,12 +1,6 @@
-import React, { ChangeEvent, useState } from "react";
-import { Form, InputGroup, FormControl, Offcanvas } from "react-bootstrap";
-import {
-  AddButton,
-  AddButtonWrapper,
-  FormWrapper,
-  ItemsWrapper,
-  ItemWrapper
-} from "./styles";
+import React, { ChangeEvent, useState, useEffect } from "react";
+import { Form, InputGroup, FormControl } from "react-bootstrap";
+import { AddButton, FormWrapper, ItemsWrapper, ItemWrapper } from "./styles";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/reducers/rootReducers";
 import {
@@ -15,9 +9,12 @@ import {
 } from "../../redux/actions/taskActions";
 import { CheckBox } from "../TodoItem/styles";
 
-const CreateToDo: React.FC = () => {
+type Prop = {
+  task?: TaskItemType;
+};
+const TaskForm: React.FC<Prop> = ({ task }) => {
   const dispatch = useDispatch();
-  const { loading, isCreating } = useSelector((state: RootState) => state.task);
+  const { loading } = useSelector((state: RootState) => state.task);
 
   const [title, setTitle] = useState("");
   const [items, setItems] = useState<ActionItemPayloadType[]>([
@@ -27,6 +24,28 @@ const CreateToDo: React.FC = () => {
       isDirty: false
     }
   ]);
+
+  useEffect(() => {
+    if (task) {
+      setTitle(task.title);
+      const taskItems = task.items.map(({ description, isDone }) => ({
+        isDone,
+        description,
+        isDirty: false
+      }));
+
+      const actionItems = [
+        ...taskItems,
+        {
+          isDone: false,
+          description: "",
+          isDirty: false
+        }
+      ];
+
+      setItems(actionItems);
+    }
+  }, [task]);
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | any>,
@@ -42,7 +61,7 @@ const CreateToDo: React.FC = () => {
       isDirty: true
     };
 
-    if (!item.isDirty) {
+    if (!item.isDirty && value) {
       newItems.push({
         isDone: false,
         description: "",
@@ -99,58 +118,40 @@ const CreateToDo: React.FC = () => {
     resetForm();
   };
 
-  const handleClose = () => {
-    resetForm();
-    dispatch(createTaskStarted(false));
-  };
-
   return (
-    <React.Fragment>
-      <Offcanvas show={isCreating} onHide={handleClose} placement="end">
-        <Offcanvas.Header closeButton>
-          <Offcanvas.Title>New Todo</Offcanvas.Title>
-        </Offcanvas.Header>
-        <Offcanvas.Body>
-          <FormWrapper>
-            <InputGroup className="mb-2">
-              <Form.Control
-                value={title}
-                type="text"
-                placeholder={"Title"}
-                onChange={handleTitleChange}
+    <FormWrapper>
+      <InputGroup className="mb-2">
+        <Form.Control
+          value={title}
+          type="text"
+          placeholder={"Title"}
+          onChange={handleTitleChange}
+        />
+        <AddButton disabled={!title || loading} onClick={handleSubmit}>
+          Save
+        </AddButton>
+      </InputGroup>
+
+      <ItemsWrapper>
+        {items.map((item, index) => (
+          <ItemWrapper>
+            <InputGroup className="mb-1" key={index}>
+              <CheckBox
+                checked={item.isDone}
+                onClick={() => handleCheckItem(item, index)}
               />
-              <AddButton disabled={!title || loading} onClick={handleSubmit}>
-                Save
-              </AddButton>
+              <FormControl
+                value={item.description}
+                name="description"
+                placeholder="Type new task item"
+                onChange={(e) => handleChange(e, item, index)}
+              />
             </InputGroup>
-
-            <ItemsWrapper>
-              {items.map((item, index) => (
-                <ItemWrapper>
-                  <InputGroup className="mb-1" key={index}>
-                    <CheckBox
-                      checked={item.isDone}
-                      onClick={() => handleCheckItem(item, index)}
-                    />
-                    <FormControl
-                      value={item.description}
-                      name="description"
-                      placeholder="Type new task item"
-                      onChange={(e) => handleChange(e, item, index)}
-                    />
-                  </InputGroup>
-                </ItemWrapper>
-              ))}
-            </ItemsWrapper>
-          </FormWrapper>
-        </Offcanvas.Body>
-      </Offcanvas>
-
-      <AddButtonWrapper onClick={() => handleStartCreation(true)}>
-        +
-      </AddButtonWrapper>
-    </React.Fragment>
+          </ItemWrapper>
+        ))}
+      </ItemsWrapper>
+    </FormWrapper>
   );
 };
 
-export default CreateToDo;
+export default TaskForm;

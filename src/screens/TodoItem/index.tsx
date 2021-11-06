@@ -7,6 +7,7 @@ import Loader from "../../components/Loader";
 import Item from "../../components/TodoItem";
 import { fetchTaskRequest } from "../../redux/actions/taskActions";
 import { Wrapper } from "./styles";
+import ToDoForm from "../../components/TodoForm/Form";
 
 const TodoItem: React.FC = () => {
   const dispatch = useDispatch();
@@ -24,7 +25,8 @@ const TodoItem: React.FC = () => {
     <AppWrapper>
       <Wrapper>
         <Loader isLoading={loading} />
-        {task && <Item todo={task} />}
+
+        {task && <ToDoForm task={task} />}
       </Wrapper>
     </AppWrapper>
   );
