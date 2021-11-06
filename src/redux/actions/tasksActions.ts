@@ -15,9 +15,6 @@ export const fetchTasksRequestSuccess = (
   tasks
 });
 
-export const fetchTasksRequestFailure = (
-  error: string
-): FetchTasksRequestFailureType => ({
-  type: FETCH_TASKS_FAILURE,
-  error
+export const fetchTasksRequestFailure = (): FetchTasksRequestFailureType => ({
+  type: FETCH_TASKS_FAILURE
 });

@@ -1,27 +1,23 @@
 type TasksStateType = {
   tasks: TodoItemType[];
   loading: boolean;
-  error: string | null;
 };
 
 type TaskStateType = {
   task: TodoItemType | null;
   loading: boolean;
-  error: string | null;
   isCreating: boolean;
 };
 
 type TaskActionType = {
   type: string;
   task?: TodoItemType;
-  error?: string | null;
   isCreating?: boolean;
 };
 
 type TasksActionType = {
   type: string;
   tasks?: TodoItemType[];
-  error?: string | null;
   newTask?: TodoItemType;
 };
 
@@ -30,7 +26,7 @@ type FetchTasksRequestSuccessType = {
   type: string;
   tasks: TaskItemType[];
 };
-type FetchTasksRequestFailureType = { type: string; error: string };
+type FetchTasksRequestFailureType = { type: string };
 
 type CreateTaskRequestType = {
   type: string;
@@ -40,7 +36,7 @@ type CreateTasksRequestSuccessType = {
   type: string;
   newTask: TaskItemType;
 };
-type CreateTasksRequestFailureType = { type: string; error: string };
+type CreateTasksRequestFailureType = { type: string };
 
 type CreateTasksStartedType = { type: string; isCreating: boolean };
 
@@ -49,4 +45,14 @@ type FetchTaskRequestSuccessType = {
   type: string;
   task: TaskItemType;
 };
-type FetchTaskRequestFailureType = { type: string; error: string };
+type FetchTaskRequestFailureType = { type: string };
+
+type ErrorStateType = {
+  message: string | null;
+};
+type ErrorActionType = {
+  type: string;
+  message?: string | null;
+};
+type SetErrorType = { type: string; message: string };
+type ClearErrorType = { type: string };

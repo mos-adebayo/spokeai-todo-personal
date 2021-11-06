@@ -7,8 +7,7 @@ import {
 
 const initialState: TasksStateType = {
   tasks: [],
-  loading: false,
-  error: null
+  loading: false
 };
 
 export default (
@@ -25,14 +24,12 @@ export default (
       return {
         ...state,
         loading: false,
-        error: null,
         tasks: action.tasks || state.tasks
       };
     case FETCH_TASKS_FAILURE:
       return {
         ...state,
-        loading: false,
-        error: action.error || state.error
+        loading: false
       };
     case CREATE_TASK_SUCCESS:
       return {

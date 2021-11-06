@@ -13,6 +13,7 @@ import {
 } from "../../util/constants";
 import { AxiosResponse } from "axios";
 import { interpretHTTPError } from "../../util/helper";
+import { clearError, setError } from "../actions/errorActions";
 
 const getTaskAPI = (id: string) => {
   return axios.get<TaskItemType>(`${API_BASE_URL}/tasks/${id}`);
@@ -29,9 +30,11 @@ function* fetchTaskSaga(action: FetchTaskRequestType) {
       action.id
     );
     yield put(fetchTaskRequestSuccess(response.data));
+    yield put(clearError());
   } catch (e: any) {
     const error = interpretHTTPError(e);
-    yield put(fetchTaskRequestFailure(error));
+    yield put(setError(error));
+    yield put(fetchTaskRequestFailure());
   }
 }
 
@@ -42,9 +45,11 @@ function* createTaskSaga(action: CreateTaskRequestType) {
       action.task
     );
     yield put(createTaskRequestSuccess(response.data));
+    yield put(clearError());
   } catch (e: any) {
     const error = interpretHTTPError(e);
-    yield put(createTaskRequestFailure(error));
+    yield put(setError(error));
+    yield put(createTaskRequestFailure());
   }
 }
 

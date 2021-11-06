@@ -11,4 +11,7 @@ export const CREATE_TASK_SUCCESS = "CREATE_TASK_SUCCESS";
 export const CREATE_TASK_FAILURE = "CREATE_TASK_FAILURE";
 export const CREATE_TASK_STARTED = "CREATE_TASK_STARTED";
 
+export const SET_ERROR = "SET_ERROR";
+export const CLEAR_ERROR = "CLEAR_ERROR";
+
 export const API_BASE_URL = "http://localhost:3004";

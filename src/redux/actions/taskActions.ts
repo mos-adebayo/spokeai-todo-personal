@@ -22,11 +22,8 @@ export const createTaskRequestSuccess = (
   newTask: payload
 });
 
-export const createTaskRequestFailure = (
-  error: string
-): CreateTasksRequestFailureType => ({
-  type: CREATE_TASK_FAILURE,
-  error
+export const createTaskRequestFailure = (): CreateTasksRequestFailureType => ({
+  type: CREATE_TASK_FAILURE
 });
 
 export const createTaskStarted = (
@@ -48,9 +45,6 @@ export const fetchTaskRequestSuccess = (
   task
 });
 
-export const fetchTaskRequestFailure = (
-  error: string
-): FetchTaskRequestFailureType => ({
-  type: FETCH_TASK_FAILURE,
-  error
+export const fetchTaskRequestFailure = (): FetchTaskRequestFailureType => ({
+  type: FETCH_TASK_FAILURE
 });

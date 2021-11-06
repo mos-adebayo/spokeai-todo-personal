@@ -6,6 +6,7 @@ import { RootState } from "../../redux/reducers/rootReducers";
 import Loader from "../../components/Loader";
 import Item from "../../components/TodoItem";
 import { fetchTaskRequest } from "../../redux/actions/taskActions";
+import { Wrapper } from "./styles";
 
 const TodoItem: React.FC = () => {
   const dispatch = useDispatch();
@@ -21,10 +22,10 @@ const TodoItem: React.FC = () => {
 
   return (
     <AppWrapper>
-      <React.Fragment>
+      <Wrapper>
         <Loader isLoading={loading} />
         {task && <Item todo={task} />}
-      </React.Fragment>
+      </Wrapper>
     </AppWrapper>
   );
 };

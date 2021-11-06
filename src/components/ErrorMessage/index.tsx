@@ -6,25 +6,26 @@ import { RootState } from "../../redux/reducers/rootReducers";
 
 const ErrorMessage: React.FC = () => {
   const [visibleToast, setVisibleToast] = useState(false);
-  const [errorMessage, setErrorMessage] = useState<string | null>("");
-  const { error: createError } = useSelector((state: RootState) => state.task);
-  const { error: fetchError } = useSelector((state: RootState) => state.tasks);
+  const { message } = useSelector((state: RootState) => state.error);
+  const { isCreating } = useSelector((state: RootState) => state.task);
 
   useEffect(() => {
-    if (fetchError) {
-      setVisibleToast(true);
-    } else {
+    if (isCreating) {
       setVisibleToast(false);
+    } else {
+      setVisibleToast(true);
     }
+  }, [message, isCreating]);
 
-    setErrorMessage(createError || fetchError);
-  }, [fetchError, createError]);
-
-  if (!errorMessage) return <React.Fragment />;
+  if (!message) return <React.Fragment />;
 
   return (
     <React.Fragment>
-      {fetchError ? (
+      {isCreating ? (
+        <Alert variant="danger">
+          <Text>{message}</Text>
+        </Alert>
+      ) : (
         <ToastContainer className="p-3" position="top-end">
           <Toast
             show={visibleToast}
@@ -34,13 +35,9 @@ const ErrorMessage: React.FC = () => {
             <Toast.Header closeButton>
               <strong className="me-auto">Error!</strong>
             </Toast.Header>
-            <Toast.Body className="text-white">{errorMessage}</Toast.Body>
+            <Toast.Body className="text-white">{message}</Toast.Body>
           </Toast>
         </ToastContainer>
-      ) : (
-        <Alert variant="danger">
-          <Text>{errorMessage}</Text>
-        </Alert>
       )}
     </React.Fragment>
   );
