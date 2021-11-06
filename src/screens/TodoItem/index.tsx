@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 
-const TodoItem: React.FC  = () => {
+const TodoItem: React.FC = () => {
   return (
     <div>
       <h2>TODO Title</h2>

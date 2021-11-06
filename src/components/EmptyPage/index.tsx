@@ -1,11 +1,15 @@
-import React from 'react';
+import React from "react";
+import { Alert } from "react-bootstrap";
+import { Wrapper } from "./styles";
 
-const Index: React.FC = () => {
-    return (
-        <div>
-            Your notes will here!
-        </div>
-    );
+const EmptyPage: React.FC = () => {
+  return (
+    <Wrapper>
+      <Alert variant="info">
+        <p>Your Todo will appear here! Get started</p>
+      </Alert>
+    </Wrapper>
+  );
 };
 
-export default Index;
+export default EmptyPage;

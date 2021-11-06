@@ -1,6 +1,6 @@
-import React, { FC } from 'react';
-import {Switch, Route, Redirect } from 'react-router-dom';
-import * as Screens from '../../screens';
+import React, { FC } from "react";
+import { Switch, Route, Redirect } from "react-router-dom";
+import * as Screens from "../../screens";
 
 interface Props {
   Router: any;

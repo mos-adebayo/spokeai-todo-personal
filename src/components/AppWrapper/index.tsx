@@ -1,19 +1,16 @@
-import React from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import React from "react";
+import { Container, Row, Col } from "react-bootstrap";
+import Header from "../Header";
 
 type Props = {
   children: React.ReactElement;
 };
 const AppWrapper: React.FC<Props> = ({ children }) => {
   return (
-    <Container>
-      <Row>
-        <Col>
-          <h3>Header</h3>
-        </Col>
-      </Row>
-      {children}
-    </Container>
+    <React.Fragment>
+      <Header />
+      <Container>{children}</Container>
+    </React.Fragment>
   );
 };
 

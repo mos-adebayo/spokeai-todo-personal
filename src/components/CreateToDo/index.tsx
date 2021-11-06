@@ -1,28 +1,33 @@
-import React, {ChangeEvent, useState } from 'react';
-import { Form, InputGroup, FormControl, Offcanvas } from 'react-bootstrap';
-import {AddButton, FormWrapper} from './styles';
-import {useDispatch, useSelector} from "react-redux";
-import {RootState} from "../../redux/reducers/rootReducers";
-import {createTaskRequest} from "../../redux/actions/taskActions";
+import React, { ChangeEvent, useState } from "react";
+import { Form, InputGroup, FormControl, Offcanvas } from "react-bootstrap";
+import { AddButton, FormWrapper } from "./styles";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../redux/reducers/rootReducers";
+import { createTaskRequest } from "../../redux/actions/taskActions";
 
 const CreateToDo: React.FC = () => {
   const dispatch = useDispatch();
-  const { loading } = useSelector((state: RootState) => state.tasks)
+  const { loading } = useSelector((state: RootState) => state.tasks);
 
-  const [titlePlaceholder, setTitlePlaceholder] = useState('Add new task...');
+  const [titlePlaceholder, setTitlePlaceholder] = useState("Add new task...");
   const [isStarted, setIsStarted] = useState(false);
-  const [title, setTitle] = useState('');
+  const [title, setTitle] = useState("");
   const [items, setItems] = useState<ActionItemPayloadType[]>([
     {
       isDone: false,
-      description: '',
+      description: "",
       isDirty: false
     }
   ]);
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | any>, item: ActionItemPayloadType, index: number) => {
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | any>,
+    item: ActionItemPayloadType,
+    index: number
+  ) => {
     const newItems = [...items];
-    const value = e.target.name === 'isDone' ? e.target.checked : e.target.value;
+    const value =
+      e.target.name === "isDone" ? e.target.checked : e.target.value;
     newItems[index] = {
       ...items[index],
       [e.target.name]: value,
@@ -32,7 +37,7 @@ const CreateToDo: React.FC = () => {
     if (!item.isDirty) {
       newItems.push({
         isDone: false,
-        description: '',
+        description: "",
         isDirty: false
       });
     }
@@ -40,7 +45,9 @@ const CreateToDo: React.FC = () => {
     setItems(newItems);
   };
 
-  const handleTitleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleTitleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setTitle(e.target.value);
     if (!isStarted) {
       setIsStarted(true);
@@ -52,26 +59,31 @@ const CreateToDo: React.FC = () => {
       return;
     }
 
-    setTitlePlaceholder(isFocus ? 'Title' : 'Add new task . . .');
+    setTitlePlaceholder(isFocus ? "Title" : "Add new task . . .");
   };
 
   const resetForm = () => {
     setIsStarted(false);
-    setTitle('');
+    setTitle("");
     setItems([
       {
         isDone: false,
-        description: '',
+        description: "",
         isDirty: false
       }
-    ])
+    ]);
   };
 
   const handleSubmit = () => {
-    const actualItems = items.filter(({description}) => description)
-                             .map(({description,isDone}) => ({isDone, description}));
-    const payload = { id: new Date().getTime(), title: title, items: actualItems}
-    dispatch(createTaskRequest(payload))
+    const actualItems = items
+      .filter(({ description }) => description)
+      .map(({ description, isDone }) => ({ isDone, description }));
+    const payload = {
+      id: new Date().getTime(),
+      title: title,
+      items: actualItems
+    };
+    dispatch(createTaskRequest(payload));
     resetForm();
   };
 
@@ -84,12 +96,12 @@ const CreateToDo: React.FC = () => {
       <Form>
         <InputGroup className="mb-2">
           <Form.Control
-              value={title}
-              type="text"
-              placeholder={titlePlaceholder}
-              onFocus={() => handleTitleFocus(true)}
-              onBlur={() => handleTitleFocus(false)}
-              onChange={handleTitleChange}
+            value={title}
+            type="text"
+            placeholder={titlePlaceholder}
+            onFocus={() => handleTitleFocus(true)}
+            onBlur={() => handleTitleFocus(false)}
+            onChange={handleTitleChange}
           />
         </InputGroup>
       </Form>
@@ -101,12 +113,12 @@ const CreateToDo: React.FC = () => {
         <Offcanvas.Body>
           <InputGroup className="mb-2">
             <Form.Control
-                value={title}
-                type="text"
-                placeholder={titlePlaceholder}
-                onFocus={() => handleTitleFocus(true)}
-                onBlur={() => handleTitleFocus(false)}
-                onChange={handleTitleChange}
+              value={title}
+              type="text"
+              placeholder={titlePlaceholder}
+              onFocus={() => handleTitleFocus(true)}
+              onBlur={() => handleTitleFocus(false)}
+              onChange={handleTitleChange}
             />
             <AddButton disabled={!isStarted || loading} onClick={handleSubmit}>
               Save
@@ -114,15 +126,19 @@ const CreateToDo: React.FC = () => {
           </InputGroup>
 
           {items.map((item, index) => (
-          <InputGroup className="mb-1" key={index}>
-            <InputGroup.Checkbox checked={item.isDone} name="isDone" onChange={(e: any) => handleChange(e, item, index)} />
-            <FormControl
+            <InputGroup className="mb-1" key={index}>
+              <InputGroup.Checkbox
+                checked={item.isDone}
+                name="isDone"
+                onChange={(e: any) => handleChange(e, item, index)}
+              />
+              <FormControl
                 value={item.description}
                 name="description"
                 placeholder="Add Task"
                 onChange={(e) => handleChange(e, item, index)}
-            />
-          </InputGroup>
+              />
+            </InputGroup>
           ))}
         </Offcanvas.Body>
       </Offcanvas>

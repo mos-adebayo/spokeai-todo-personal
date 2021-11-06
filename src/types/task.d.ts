@@ -1,11 +1,11 @@
 type ActionItemType = {
-  isDone: boolean,
-  description: string,
-}
+  isDone: boolean;
+  description: string;
+};
 
 type ActionItemPayloadType = ActionItemType & {
-  isDirty: boolean
-}
+  isDirty: boolean;
+};
 
 type TaskItemType = {
   id: number;
