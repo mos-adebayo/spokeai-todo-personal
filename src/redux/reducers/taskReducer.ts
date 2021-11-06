@@ -5,7 +5,10 @@ import {
   CREATE_TASK_SUCCESS,
   FETCH_TASK_REQUEST,
   FETCH_TASK_SUCCESS,
-  FETCH_TASK_FAILURE
+  FETCH_TASK_FAILURE,
+  UPDATE_TASK_REQUEST,
+  UPDATE_TASK_SUCCESS,
+  UPDATE_TASK_FAILURE
 } from "../../util/constants";
 
 const initialState: TaskStateType = {
@@ -21,6 +24,7 @@ export default (
   switch (action.type) {
     case CREATE_TASK_FAILURE:
     case FETCH_TASK_FAILURE:
+    case UPDATE_TASK_FAILURE:
       return {
         ...state,
         loading: false
@@ -38,6 +42,7 @@ export default (
         loading: false
       };
     case CREATE_TASK_REQUEST:
+    case UPDATE_TASK_REQUEST:
       return {
         ...state,
         loading: true
@@ -48,6 +53,7 @@ export default (
         isCreating: action.isCreating || false
       };
     case CREATE_TASK_SUCCESS:
+    case UPDATE_TASK_SUCCESS:
       return {
         ...state,
         loading: false,

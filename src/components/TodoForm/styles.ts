@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { Button } from "react-bootstrap";
 import { CheckBox } from "../TodoItem/styles";
 
@@ -6,6 +6,14 @@ export const AddButton = styled(Button)`
   &:focus {
     box-shadow: none;
   }
+
+  background: linear-gradient(
+    77.07deg,
+    rgb(69, 183, 204) 0%,
+    rgb(75, 207, 187) 100%
+  );
+  outline: none;
+  border: none;
 `;
 
 export const AddButtonWrapper = styled.div`
@@ -46,15 +54,6 @@ export const FormWrapper = styled.div`
   }
 `;
 
-export const ItemsWrapper = styled.div`
-  margin-top: 15px;
-
-  .form-control {
-    height: 1.5rem;
-    border: none;
-  }
-`;
-
 export const ItemWrapper = styled.div`
   border-bottom: 1px solid #dfdfdf;
   margin: 0 -16px;
@@ -67,4 +66,21 @@ export const ItemWrapper = styled.div`
   &:first-of-type {
     border-top: 1px solid #dfdfdf;
   }
+`;
+
+const editItemWrapper = css`
+  ${ItemWrapper} {
+    margin: 0;
+  }
+`;
+
+export const ItemsWrapper = styled.div<{ editMode?: boolean }>`
+  margin-top: 15px;
+
+  .form-control {
+    height: 1.5rem;
+    border: none;
+  }
+
+  ${({ editMode }) => editMode && editItemWrapper};
 `;

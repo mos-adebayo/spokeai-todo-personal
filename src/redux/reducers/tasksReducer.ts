@@ -34,7 +34,7 @@ export default (
     case CREATE_TASK_SUCCESS:
       return {
         ...state,
-        tasks: action.newTask ? [action.newTask, ...state.tasks] : state.tasks
+        tasks: action.task ? [action.task, ...state.tasks] : state.tasks
       };
     default:
       return {

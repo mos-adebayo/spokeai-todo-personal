@@ -5,7 +5,10 @@ import {
   CREATE_TASK_SUCCESS,
   FETCH_TASK_FAILURE,
   FETCH_TASK_REQUEST,
-  FETCH_TASK_SUCCESS
+  FETCH_TASK_SUCCESS,
+  UPDATE_TASK_FAILURE,
+  UPDATE_TASK_REQUEST,
+  UPDATE_TASK_SUCCESS
 } from "../../util/constants";
 
 export const createTaskRequest = (
@@ -17,18 +20,18 @@ export const createTaskRequest = (
 
 export const createTaskRequestSuccess = (
   payload: TaskItemType
-): CreateTasksRequestSuccessType => ({
+): CreateTaskRequestSuccessType => ({
   type: CREATE_TASK_SUCCESS,
-  newTask: payload
+  task: payload
 });
 
-export const createTaskRequestFailure = (): CreateTasksRequestFailureType => ({
+export const createTaskRequestFailure = (): CreateTaskRequestFailureType => ({
   type: CREATE_TASK_FAILURE
 });
 
 export const createTaskStarted = (
   isCreating: boolean
-): CreateTasksStartedType => ({
+): CreateTaskStartedType => ({
   type: CREATE_TASK_STARTED,
   isCreating
 });
@@ -47,4 +50,22 @@ export const fetchTaskRequestSuccess = (
 
 export const fetchTaskRequestFailure = (): FetchTaskRequestFailureType => ({
   type: FETCH_TASK_FAILURE
+});
+
+export const updateTaskRequestSuccess = (
+  payload: TaskItemType
+): UpdateTaskRequestSuccessType => ({
+  type: UPDATE_TASK_SUCCESS,
+  task: payload
+});
+
+export const updateTaskRequestFailure = (): UpdateTaskRequestFailureType => ({
+  type: UPDATE_TASK_FAILURE
+});
+
+export const updateTaskRequest = (
+  task: TaskItemType
+): UpdateTaskRequestType => ({
+  type: UPDATE_TASK_REQUEST,
+  task
 });

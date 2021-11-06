@@ -1,11 +1,18 @@
 import React, { ChangeEvent, useState, useEffect } from "react";
-import { Form, InputGroup, FormControl } from "react-bootstrap";
+import {
+  Form,
+  InputGroup,
+  FormControl,
+  Toast,
+  ToastContainer
+} from "react-bootstrap";
 import { AddButton, FormWrapper, ItemsWrapper, ItemWrapper } from "./styles";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/reducers/rootReducers";
 import {
   createTaskRequest,
-  createTaskStarted
+  createTaskStarted,
+  updateTaskRequest
 } from "../../redux/actions/taskActions";
 import { CheckBox } from "../TodoItem/styles";
 
@@ -16,6 +23,7 @@ const TaskForm: React.FC<Prop> = ({ task }) => {
   const dispatch = useDispatch();
   const { loading } = useSelector((state: RootState) => state.task);
 
+  const [visibleToast, setVisibleToast] = useState(false);
   const [title, setTitle] = useState("");
   const [items, setItems] = useState<ActionItemPayloadType[]>([
     {
@@ -110,12 +118,18 @@ const TaskForm: React.FC<Prop> = ({ task }) => {
       .filter(({ description }) => description)
       .map(({ description, isDone }) => ({ isDone, description }));
     const payload = {
-      id: new Date().getTime().toString(),
+      id: task ? task.id : new Date().getTime().toString(),
       title: title,
       items: actualItems
     };
-    dispatch(createTaskRequest(payload));
-    resetForm();
+
+    if (task) {
+      dispatch(updateTaskRequest(payload));
+      setVisibleToast(true);
+    } else {
+      dispatch(createTaskRequest(payload));
+      resetForm();
+    }
   };
 
   return (
@@ -132,9 +146,9 @@ const TaskForm: React.FC<Prop> = ({ task }) => {
         </AddButton>
       </InputGroup>
 
-      <ItemsWrapper>
+      <ItemsWrapper editMode={Boolean(task)}>
         {items.map((item, index) => (
-          <ItemWrapper>
+          <ItemWrapper key={index}>
             <InputGroup className="mb-1" key={index}>
               <CheckBox
                 checked={item.isDone}
@@ -150,6 +164,20 @@ const TaskForm: React.FC<Prop> = ({ task }) => {
           </ItemWrapper>
         ))}
       </ItemsWrapper>
+
+      <ToastContainer className="p-3" position="top-end">
+        <Toast
+          show={visibleToast}
+          onClose={() => setVisibleToast(false)}
+          bg="light"
+          autohide
+          delay={3000}
+        >
+          <Toast.Body className="text-success">
+            Task updated successfully!
+          </Toast.Body>
+        </Toast>
+      </ToastContainer>
     </FormWrapper>
   );
 };

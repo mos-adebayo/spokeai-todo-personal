@@ -4,7 +4,6 @@ import AppWrapper from "../../components/AppWrapper";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/reducers/rootReducers";
 import Loader from "../../components/Loader";
-import Item from "../../components/TodoItem";
 import { fetchTaskRequest } from "../../redux/actions/taskActions";
 import { Wrapper } from "./styles";
 import ToDoForm from "../../components/TodoForm/Form";
