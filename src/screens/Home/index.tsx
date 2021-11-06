@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Masonry from "react-masonry-css";
 import AppWrapper from "../../components/AppWrapper";
 import TodoItem from "../../components/TodoItem";
-import CreateToDo from "../../components/CreateToDo";
 import Loader from "../../components/Loader";
 
 import { RootState } from "../../redux/reducers/rootReducers";
-import { fetchTasksRequest } from "../../redux/actions/taskActions";
+import { fetchTasksRequest } from "../../redux/actions/tasksActions";
 import EmptyPage from "../../components/EmptyPage";
 
 const breakpointColumnsObj = {
@@ -30,10 +30,7 @@ const Home: React.FC = () => {
   return (
     <AppWrapper>
       <React.Fragment>
-        <CreateToDo />
-
         <Loader />
-
         {tasksLength > 0 ? (
           <Masonry
             className="my-masonry-grid"
@@ -41,7 +38,9 @@ const Home: React.FC = () => {
             breakpointCols={breakpointColumnsObj}
           >
             {tasks.map((item: TaskItemType) => (
-              <TodoItem todo={item} key={item.id} />
+              <Link to={`/todo/${item.id}`} key={item.id}>
+                <TodoItem todo={item} />{" "}
+              </Link>
             ))}
           </Masonry>
         ) : (

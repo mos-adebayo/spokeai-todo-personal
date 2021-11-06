@@ -11,7 +11,7 @@ import {
 const CreateToDo: React.FC = () => {
   const dispatch = useDispatch();
   const { loading, isCreating } = useSelector(
-    (state: RootState) => state.tasks
+    (state: RootState) => state.task
   );
 
   const [title, setTitle] = useState("");

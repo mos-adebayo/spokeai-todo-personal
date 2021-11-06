@@ -6,21 +6,25 @@ import { RootState } from "../../redux/reducers/rootReducers";
 
 const ErrorMessage: React.FC = () => {
   const [visibleToast, setVisibleToast] = useState(false);
-  const { error, isCreating } = useSelector((state: RootState) => state.tasks);
+  const [errorMessage, setErrorMessage] = useState<string | null>('');
+  const { error: createError } = useSelector((state: RootState) => state.task);
+  const { error: fetchError } = useSelector((state: RootState) => state.tasks);
 
   useEffect(() => {
-    if (error && !isCreating) {
+    if(fetchError) {
       setVisibleToast(true);
     } else {
       setVisibleToast(false);
     }
-  }, [error, isCreating]);
 
-  if (!error) return <React.Fragment />;
+    setErrorMessage(createError || fetchError);
+  }, [fetchError, createError]);
+
+  if (!errorMessage) return <React.Fragment />;
 
   return (
     <React.Fragment>
-      {!isCreating ? (
+      {fetchError ? (
         <ToastContainer className="p-3" position="top-end">
           <Toast
             show={visibleToast}
@@ -30,12 +34,12 @@ const ErrorMessage: React.FC = () => {
             <Toast.Header closeButton>
               <strong className="me-auto">Error!</strong>
             </Toast.Header>
-            <Toast.Body className="text-white">{error}</Toast.Body>
+            <Toast.Body className="text-white">{errorMessage}</Toast.Body>
           </Toast>
         </ToastContainer>
       ) : (
         <Alert variant="danger">
-          <Text>{error}</Text>
+          <Text>{errorMessage}</Text>
         </Alert>
       )}
     </React.Fragment>

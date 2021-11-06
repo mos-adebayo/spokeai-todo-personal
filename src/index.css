@@ -12,3 +12,12 @@ body {
   padding-left: 30px;
   background-clip: padding-box;
 }
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  text-decoration: none;
+}

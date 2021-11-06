@@ -1,11 +1,11 @@
 import React from "react";
+import AppWrapper from "../../components/AppWrapper";
 
 const TodoItem: React.FC = () => {
   return (
-    <div>
+    <AppWrapper>
       <h2>TODO Title</h2>
-      <p>Todo description.</p>
-    </div>
+    </AppWrapper>
   );
 };
 

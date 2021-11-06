@@ -2,6 +2,7 @@ import React from "react";
 import { Container } from "react-bootstrap";
 import Header from "../Header";
 import ErrorMessage from "../ErrorMessage";
+import CreateToDo from "../CreateToDo";
 
 type Props = {
   children: React.ReactElement;
@@ -14,6 +15,8 @@ const AppWrapper: React.FC<Props> = ({ children }) => {
       <ErrorMessage />
 
       <Container>{children}</Container>
+
+      <CreateToDo />
     </React.Fragment>
   );
 };
