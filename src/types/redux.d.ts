@@ -2,12 +2,14 @@ type TasksStateType = {
   tasks: TodoItemType[];
   loading: boolean;
   error: string | null;
+  isCreating: boolean;
 };
 
 type TaskActionType = {
   type: string;
   tasks?: TodoItemType[];
   error?: string | null;
+  isCreating?: boolean;
   newTask?: TodoItemType;
 };
 
@@ -27,3 +29,5 @@ type CreateTasksRequestSuccessType = {
   newTask: TaskItemType;
 };
 type CreateTasksRequestFailureType = { type: string; error: string };
+
+type CreateTasksStartedType = { type: string; isCreating: boolean };

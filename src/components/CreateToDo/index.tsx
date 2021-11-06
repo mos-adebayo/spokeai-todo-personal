@@ -1,16 +1,19 @@
 import React, { ChangeEvent, useState } from "react";
 import { Form, InputGroup, FormControl, Offcanvas } from "react-bootstrap";
-import { AddButton, FormWrapper } from "./styles";
+import { AddButton, AddButtonWrapper, FormWrapper } from "./styles";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/reducers/rootReducers";
-import { createTaskRequest } from "../../redux/actions/taskActions";
+import {
+  createTaskRequest,
+  createTaskStarted
+} from "../../redux/actions/taskActions";
 
 const CreateToDo: React.FC = () => {
   const dispatch = useDispatch();
-  const { loading } = useSelector((state: RootState) => state.tasks);
+  const { loading, isCreating } = useSelector(
+    (state: RootState) => state.tasks
+  );
 
-  const [titlePlaceholder, setTitlePlaceholder] = useState("Add new task...");
-  const [isStarted, setIsStarted] = useState(false);
   const [title, setTitle] = useState("");
   const [items, setItems] = useState<ActionItemPayloadType[]>([
     {
@@ -45,25 +48,12 @@ const CreateToDo: React.FC = () => {
     setItems(newItems);
   };
 
-  const handleTitleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleTitleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value);
-    if (!isStarted) {
-      setIsStarted(true);
-    }
-  };
-
-  const handleTitleFocus = (isFocus: boolean) => {
-    if (isStarted) {
-      return;
-    }
-
-    setTitlePlaceholder(isFocus ? "Title" : "Add new task . . .");
   };
 
   const resetForm = () => {
-    setIsStarted(false);
+    handleStartCreation(false);
     setTitle("");
     setItems([
       {
@@ -74,6 +64,9 @@ const CreateToDo: React.FC = () => {
     ]);
   };
 
+  const handleStartCreation = (status: boolean) => {
+    dispatch(createTaskStarted(status));
+  };
   const handleSubmit = () => {
     const actualItems = items
       .filter(({ description }) => description)
@@ -89,60 +82,52 @@ const CreateToDo: React.FC = () => {
 
   const handleClose = () => {
     resetForm();
+    dispatch(createTaskStarted(false));
   };
 
   return (
-    <FormWrapper>
-      <Form>
-        <InputGroup className="mb-2">
-          <Form.Control
-            value={title}
-            type="text"
-            placeholder={titlePlaceholder}
-            onFocus={() => handleTitleFocus(true)}
-            onBlur={() => handleTitleFocus(false)}
-            onChange={handleTitleChange}
-          />
-        </InputGroup>
-      </Form>
-
-      <Offcanvas show={isStarted} onHide={handleClose} placement="end">
+    <React.Fragment>
+      <Offcanvas show={isCreating} onHide={handleClose} placement="end">
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Add Task</Offcanvas.Title>
+          <Offcanvas.Title>New Todo</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-          <InputGroup className="mb-2">
-            <Form.Control
-              value={title}
-              type="text"
-              placeholder={titlePlaceholder}
-              onFocus={() => handleTitleFocus(true)}
-              onBlur={() => handleTitleFocus(false)}
-              onChange={handleTitleChange}
-            />
-            <AddButton disabled={!isStarted || loading} onClick={handleSubmit}>
-              Save
-            </AddButton>
-          </InputGroup>
-
-          {items.map((item, index) => (
-            <InputGroup className="mb-1" key={index}>
-              <InputGroup.Checkbox
-                checked={item.isDone}
-                name="isDone"
-                onChange={(e: any) => handleChange(e, item, index)}
+          <FormWrapper>
+            <InputGroup className="mb-2">
+              <Form.Control
+                value={title}
+                type="text"
+                placeholder={"Title"}
+                onChange={handleTitleChange}
               />
-              <FormControl
-                value={item.description}
-                name="description"
-                placeholder="Add Task"
-                onChange={(e) => handleChange(e, item, index)}
-              />
+              <AddButton disabled={!title || loading} onClick={handleSubmit}>
+                Save
+              </AddButton>
             </InputGroup>
-          ))}
+
+            {items.map((item, index) => (
+              <InputGroup className="mb-1" key={index}>
+                <InputGroup.Checkbox
+                  checked={item.isDone}
+                  name="isDone"
+                  onChange={(e: any) => handleChange(e, item, index)}
+                />
+                <FormControl
+                  value={item.description}
+                  name="description"
+                  placeholder="Task item"
+                  onChange={(e) => handleChange(e, item, index)}
+                />
+              </InputGroup>
+            ))}
+          </FormWrapper>
         </Offcanvas.Body>
       </Offcanvas>
-    </FormWrapper>
+
+      <AddButtonWrapper onClick={() => handleStartCreation(true)}>
+        +
+      </AddButtonWrapper>
+    </React.Fragment>
   );
 };
 

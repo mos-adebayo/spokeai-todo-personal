@@ -1,6 +1,7 @@
 import {
   CREATE_TASK_FAILURE,
   CREATE_TASK_REQUEST,
+  CREATE_TASK_STARTED,
   CREATE_TASK_SUCCESS,
   FETCH_TASKS_FAILURE,
   FETCH_TASKS_REQUEST,
@@ -10,7 +11,8 @@ import {
 const initialState: TasksStateType = {
   tasks: [],
   loading: false,
-  error: null
+  error: null,
+  isCreating: false
 };
 
 export default (
@@ -42,12 +44,19 @@ export default (
         ...state,
         loading: true
       };
+    case CREATE_TASK_STARTED:
+      return {
+        ...state,
+        isCreating: action.isCreating || false,
+        error: null
+      };
     case CREATE_TASK_SUCCESS:
       return {
         ...state,
         loading: false,
         tasks: action.newTask ? [action.newTask, ...state.tasks] : state.tasks,
-        error: null
+        error: null,
+        isCreating: false
       };
     default:
       return {

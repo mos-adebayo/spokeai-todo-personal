@@ -17,3 +17,8 @@ export const Wrapper = styled.div`
     width: 50%;
   }
 `;
+
+export const LinkText = styled.span`
+  cursor: pointer;
+  text-decoration: underline;
+`;

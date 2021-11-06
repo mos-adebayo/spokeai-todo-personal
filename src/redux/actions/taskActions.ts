@@ -1,6 +1,7 @@
 import {
   CREATE_TASK_FAILURE,
   CREATE_TASK_REQUEST,
+  CREATE_TASK_STARTED,
   CREATE_TASK_SUCCESS,
   FETCH_TASKS_FAILURE,
   FETCH_TASKS_REQUEST,
@@ -41,7 +42,14 @@ export const createTaskRequestSuccess = (
 
 export const createTaskRequestFailure = (
   error: string
-): FetchTasksRequestFailureType => ({
+): CreateTasksRequestFailureType => ({
   type: CREATE_TASK_FAILURE,
   error
+});
+
+export const createTaskStarted = (
+  isCreating: boolean
+): CreateTasksStartedType => ({
+  type: CREATE_TASK_STARTED,
+  isCreating
 });
