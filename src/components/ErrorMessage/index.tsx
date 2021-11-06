@@ -21,15 +21,18 @@ const ErrorMessage: React.FC = () => {
   return (
     <React.Fragment>
       {!isCreating ? (
-          <ToastContainer className="p-3" position="top-end">
-            <Toast show={visibleToast} onClose={() => setVisibleToast(false)} bg="danger">
-              <Toast.Header closeButton>
-                <strong className="me-auto">Error!</strong>
-              </Toast.Header>
-              <Toast.Body className="text-white">{error}</Toast.Body>
-            </Toast>
-          </ToastContainer>
-
+        <ToastContainer className="p-3" position="top-end">
+          <Toast
+            show={visibleToast}
+            onClose={() => setVisibleToast(false)}
+            bg="danger"
+          >
+            <Toast.Header closeButton>
+              <strong className="me-auto">Error!</strong>
+            </Toast.Header>
+            <Toast.Body className="text-white">{error}</Toast.Body>
+          </Toast>
+        </ToastContainer>
       ) : (
         <Alert variant="danger">
           <Text>{error}</Text>

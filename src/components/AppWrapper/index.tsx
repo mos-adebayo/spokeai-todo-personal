@@ -11,7 +11,7 @@ const AppWrapper: React.FC<Props> = ({ children }) => {
     <React.Fragment>
       <Header />
 
-        <ErrorMessage />
+      <ErrorMessage />
 
       <Container>{children}</Container>
     </React.Fragment>

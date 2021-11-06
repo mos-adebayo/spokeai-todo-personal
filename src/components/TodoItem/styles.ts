@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Wrapper = styled.div`
   background: #fff;
@@ -8,9 +8,51 @@ export const Wrapper = styled.div`
   margin-bottom: 15px;
 `;
 
+export const ItemWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  margin: 15px 0;
+`;
+
+export const HeaderWrapper = styled.div`
+  margin-bottom: 20px;
+`;
+
 export const Title = styled.h4`
   color: #49486c;
   &:first-letter {
     text-transform: uppercase;
   }
+`;
+
+export const Text = styled.span`
+  color: #49486c;
+  &:first-letter {
+    text-transform: uppercase;
+  }
+`;
+
+const isCheckedBox = css`
+  &:after {
+    content: " ";
+    display: inline-block;
+    width: 0.5rem;
+    height: 1rem;
+    box-sizing: border-box;
+    transform: rotate(40deg);
+    border: 0.1rem solid #49486c;
+    border-top: 0;
+    border-left: 0;
+  }
+`;
+
+export const CheckBox = styled.span<{ checked: boolean }>`
+  border: 1px solid #49486c;
+  width: 1.5rem;
+  height: 1.5rem;
+  display: inline-block;
+  margin-right: 10px;
+  text-align: center;
+
+  ${({ checked }) => checked && isCheckedBox};
 `;

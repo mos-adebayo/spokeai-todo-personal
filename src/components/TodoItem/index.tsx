@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Title, Wrapper } from "./styles";
-import { Form, ProgressBar } from "react-bootstrap";
+import {
+  CheckBox,
+  HeaderWrapper,
+  ItemWrapper,
+  Text,
+  Title,
+  Wrapper
+} from "./styles";
+import { ProgressBar } from "react-bootstrap";
 import { getProgressStatus } from "../../util/helper";
 
 type Props = {
@@ -26,24 +33,23 @@ const TodoItem: React.FC<Props> = ({ todo }) => {
 
   return (
     <Wrapper>
-      <Title>{todo.title}</Title>
-      {todo.items.length > 0 && (
-        <ProgressBar
-          striped
-          now={progress}
-          variant={status}
-          label={`${progress}%`}
-        />
-      )}
+      <HeaderWrapper>
+        <Title>{todo.title}</Title>
+        {todo.items.length > 0 && (
+          <ProgressBar
+            striped
+            now={progress}
+            variant={status}
+            label={`${progress}%`}
+          />
+        )}
+      </HeaderWrapper>
 
       {todo.items.map((item, key) => (
-        <div key={key}>
-          <Form.Check
-            type="checkbox"
-            defaultChecked={item.isDone}
-            label={item.description}
-          />
-        </div>
+        <ItemWrapper key={key}>
+          <CheckBox checked={item.isDone} />
+          <Text>{item.description}</Text>
+        </ItemWrapper>
       ))}
     </Wrapper>
   );
