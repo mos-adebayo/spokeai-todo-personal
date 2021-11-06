@@ -10,9 +10,7 @@ import {
 
 const CreateToDo: React.FC = () => {
   const dispatch = useDispatch();
-  const { loading, isCreating } = useSelector(
-    (state: RootState) => state.task
-  );
+  const { loading, isCreating } = useSelector((state: RootState) => state.task);
 
   const [title, setTitle] = useState("");
   const [items, setItems] = useState<ActionItemPayloadType[]>([
@@ -72,7 +70,7 @@ const CreateToDo: React.FC = () => {
       .filter(({ description }) => description)
       .map(({ description, isDone }) => ({ isDone, description }));
     const payload = {
-      id: new Date().getTime(),
+      id: new Date().getTime().toString(),
       title: title,
       items: actualItems
     };

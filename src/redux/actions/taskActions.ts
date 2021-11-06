@@ -36,7 +36,7 @@ export const createTaskStarted = (
   isCreating
 });
 
-export const fetchTaskRequest = (id: number): FetchTaskRequestType => ({
+export const fetchTaskRequest = (id: string): FetchTaskRequestType => ({
   type: FETCH_TASK_REQUEST,
   id
 });

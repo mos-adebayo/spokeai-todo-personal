@@ -12,8 +12,9 @@ import {
   FETCH_TASK_REQUEST
 } from "../../util/constants";
 import { AxiosResponse } from "axios";
+import { interpretHTTPError } from "../../util/helper";
 
-const getTaskAPI = (id: number) => {
+const getTaskAPI = (id: string) => {
   return axios.get<TaskItemType>(`${API_BASE_URL}/tasks/${id}`);
 };
 
@@ -28,8 +29,8 @@ function* fetchTaskSaga(action: FetchTaskRequestType) {
       action.id
     );
     yield put(fetchTaskRequestSuccess(response.data));
-  } catch (e) {
-    const error = "Unable to fetch tasks. Ensure to start JSON server";
+  } catch (e: any) {
+    const error = interpretHTTPError(e);
     yield put(fetchTaskRequestFailure(error));
   }
 }
@@ -41,9 +42,8 @@ function* createTaskSaga(action: CreateTaskRequestType) {
       action.task
     );
     yield put(createTaskRequestSuccess(response.data));
-  } catch (e) {
-    // TODO: Interpret HTTP response
-    const error = "Unable to create tasks";
+  } catch (e: any) {
+    const error = interpretHTTPError(e);
     yield put(createTaskRequestFailure(error));
   }
 }

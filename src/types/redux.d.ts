@@ -13,7 +13,7 @@ type TaskStateType = {
 
 type TaskActionType = {
   type: string;
-  tasks?: TodoItemType[];
+  task?: TodoItemType;
   error?: string | null;
   isCreating?: boolean;
 };
@@ -44,7 +44,7 @@ type CreateTasksRequestFailureType = { type: string; error: string };
 
 type CreateTasksStartedType = { type: string; isCreating: boolean };
 
-type FetchTaskRequestType = { type: string; id: number };
+type FetchTaskRequestType = { type: string; id: string };
 type FetchTaskRequestSuccessType = {
   type: string;
   task: TaskItemType;

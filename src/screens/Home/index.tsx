@@ -19,7 +19,7 @@ const breakpointColumnsObj = {
 
 const Home: React.FC = () => {
   const dispatch = useDispatch();
-  const { tasks } = useSelector((state: RootState) => state.tasks);
+  const { tasks, loading } = useSelector((state: RootState) => state.tasks);
 
   useEffect(() => {
     dispatch(fetchTasksRequest());
@@ -30,7 +30,7 @@ const Home: React.FC = () => {
   return (
     <AppWrapper>
       <React.Fragment>
-        <Loader />
+        <Loader isLoading={loading} />
         {tasksLength > 0 ? (
           <Masonry
             className="my-masonry-grid"
@@ -39,7 +39,7 @@ const Home: React.FC = () => {
           >
             {tasks.map((item: TaskItemType) => (
               <Link to={`/todo/${item.id}`} key={item.id}>
-                <TodoItem todo={item} />{" "}
+                <TodoItem todo={item} />
               </Link>
             ))}
           </Masonry>

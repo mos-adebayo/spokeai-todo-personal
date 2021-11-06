@@ -1,10 +1,13 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Wrapper } from "./styles";
 
 const Header: React.FC = () => {
   return (
     <Wrapper>
-      <h3>Spoke.ai</h3>
+      <Link to="/">
+        <h3>Spoke.ai</h3>
+      </Link>
     </Wrapper>
   );
 };

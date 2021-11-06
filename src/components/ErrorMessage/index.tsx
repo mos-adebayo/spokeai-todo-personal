@@ -6,12 +6,12 @@ import { RootState } from "../../redux/reducers/rootReducers";
 
 const ErrorMessage: React.FC = () => {
   const [visibleToast, setVisibleToast] = useState(false);
-  const [errorMessage, setErrorMessage] = useState<string | null>('');
+  const [errorMessage, setErrorMessage] = useState<string | null>("");
   const { error: createError } = useSelector((state: RootState) => state.task);
   const { error: fetchError } = useSelector((state: RootState) => state.tasks);
 
   useEffect(() => {
-    if(fetchError) {
+    if (fetchError) {
       setVisibleToast(true);
     } else {
       setVisibleToast(false);

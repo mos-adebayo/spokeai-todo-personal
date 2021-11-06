@@ -6,6 +6,7 @@ import {
 } from "../actions/tasksActions";
 import { API_BASE_URL, FETCH_TASKS_REQUEST } from "../../util/constants";
 import { AxiosResponse } from "axios";
+import { interpretHTTPError } from "../../util/helper";
 
 const getTasksAPI = () => {
   return axios.get<TaskItemType[]>(
@@ -17,8 +18,8 @@ function* fetchTasksSaga() {
   try {
     const response: AxiosResponse<TaskItemType[]> = yield call(getTasksAPI);
     yield put(fetchTasksRequestSuccess(response.data));
-  } catch (e) {
-    const error = "Unable to fetch tasks. Ensure to start JSON server";
+  } catch (e: any) {
+    const error = interpretHTTPError(e);
     yield put(fetchTasksRequestFailure(error));
   }
 }
