@@ -14,7 +14,9 @@ import {
 import { AxiosResponse } from "axios";
 
 const getTasksAPI = () => {
-  return axios.get<TaskItemType[]>(`${API_BASE_URL}/tasks?_order=asc`);
+  return axios.get<TaskItemType[]>(
+    `${API_BASE_URL}/tasks?_sort=id&_order=desc`
+  );
 };
 const createTaskAPI = (payload: TaskItemType) => {
   return axios.post<TaskItemType>(`${API_BASE_URL}/tasks`, payload);
