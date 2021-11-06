@@ -1,6 +1,6 @@
 import React from "react";
 import { Alert } from "react-bootstrap";
-import {LinkText, Wrapper} from "./styles";
+import { LinkText, Wrapper } from "./styles";
 import { useDispatch } from "react-redux";
 import { createTaskStarted } from "../../redux/actions/taskActions";
 

@@ -25,8 +25,7 @@ function* fetchTasksSaga() {
     const response: AxiosResponse<TaskItemType[]> = yield call(getTasksAPI);
     yield put(fetchTasksRequestSuccess(response.data));
   } catch (e) {
-    // TODO: Interpret HTTP response
-    const error = "Unable to fetch tasks";
+    const error = "Unable to fetch tasks. Ensure to start JSON server";
     yield put(fetchTasksRequestFailure(error));
   }
 }
