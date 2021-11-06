@@ -1,11 +1,20 @@
 import styled, { css } from "styled-components";
 
-export const Wrapper = styled.div`
-  background: #fff;
+import bgImage from "../../assets/images/bg-pattern.svg";
+import { gradientPrimaryBackground } from "../../util/stylesheet";
+
+const completedItemWrapper = css`
+  ${gradientPrimaryBackground};
+`;
+
+export const Wrapper = styled.div<{ completed?: boolean }>`
   border-radius: 12px;
   box-shadow: rgb(166 171 189 / 20%) 0 10px 20px;
   padding: 15px 30px;
   margin-bottom: 15px;
+  background: url(${bgImage}) #fff bottom right no-repeat;
+
+  ${({ completed }) => completed && completedItemWrapper};
 `;
 
 export const HeaderWrapper = styled.div`

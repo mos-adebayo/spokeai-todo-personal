@@ -1,19 +1,17 @@
 import styled, { css } from "styled-components";
 import { Button } from "react-bootstrap";
 import { CheckBox } from "../TodoItem/styles";
+import { gradientPrimaryBackground } from "../../util/stylesheet";
 
 export const AddButton = styled(Button)`
   &:focus {
     box-shadow: none;
   }
 
-  background: linear-gradient(
-    77.07deg,
-    rgb(69, 183, 204) 0%,
-    rgb(75, 207, 187) 100%
-  );
   outline: none;
   border: none;
+
+  ${gradientPrimaryBackground};
 `;
 
 export const AddButtonWrapper = styled.div`
@@ -32,12 +30,9 @@ export const AddButtonWrapper = styled.div`
   height: 100px;
   font-size: 80px;
   border-radius: 50%;
-  background: linear-gradient(
-    77.07deg,
-    rgb(69, 183, 204) 0%,
-    rgb(75, 207, 187) 100%
-  );
   box-shadow: rgb(52 58 64 / 40%) 3px 1px 13px 0;
+
+  ${gradientPrimaryBackground};
 
   @media screen and (max-width: 767px) {
     width: 80px;

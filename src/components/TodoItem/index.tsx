@@ -32,10 +32,10 @@ const TodoItem: React.FC<Props> = ({ todo }) => {
   }, [progress]);
 
   return (
-    <Wrapper>
+    <Wrapper completed={progress === 100}>
       <HeaderWrapper>
         <Title>{todo.title}</Title>
-        {todo.items.length > 0 && (
+        {todo.items.length > 0 && progress !== 100 && (
           <ProgressBar
             striped
             now={progress}
