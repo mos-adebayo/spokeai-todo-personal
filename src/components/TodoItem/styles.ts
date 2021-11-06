@@ -28,32 +28,34 @@ export const Text = styled.span`
   }
 `;
 
-export const CheckBox = styled.span`
+const checkedBox = css`
+  &:after {
+    content: " ";
+    display: inline-block;
+    width: 0.5rem;
+    height: 1rem;
+    box-sizing: border-box;
+    transform: rotate(40deg);
+    border: 0.1rem solid #49486c;
+    border-top: 0;
+    border-left: 0;
+  }
+`;
+
+export const CheckBox = styled.span<{ checked: boolean }>`
   border: 1px solid #49486c;
   width: 1.5rem;
   height: 1.5rem;
   display: inline-block;
   margin-right: 10px;
   text-align: center;
+
+  ${({ checked }) => checked && checkedBox};
 `;
 
 const checkedItem = css`
   ${Text} {
     text-decoration: line-through;
-  }
-
-  ${CheckBox} {
-    &:after {
-      content: " ";
-      display: inline-block;
-      width: 0.5rem;
-      height: 1rem;
-      box-sizing: border-box;
-      transform: rotate(40deg);
-      border: 0.1rem solid #49486c;
-      border-top: 0;
-      border-left: 0;
-    }
   }
 `;
 

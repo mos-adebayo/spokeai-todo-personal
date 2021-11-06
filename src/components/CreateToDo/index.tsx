@@ -1,12 +1,19 @@
 import React, { ChangeEvent, useState } from "react";
 import { Form, InputGroup, FormControl, Offcanvas } from "react-bootstrap";
-import { AddButton, AddButtonWrapper, FormWrapper } from "./styles";
+import {
+  AddButton,
+  AddButtonWrapper,
+  FormWrapper,
+  ItemsWrapper,
+  ItemWrapper
+} from "./styles";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/reducers/rootReducers";
 import {
   createTaskRequest,
   createTaskStarted
 } from "../../redux/actions/taskActions";
+import { CheckBox } from "../TodoItem/styles";
 
 const CreateToDo: React.FC = () => {
   const dispatch = useDispatch();
@@ -48,6 +55,20 @@ const CreateToDo: React.FC = () => {
 
   const handleTitleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value);
+  };
+
+  const handleCheckItem = (item: ActionItemPayloadType, index: number) => {
+    if (!item.description) return;
+
+    const newItems = [...items];
+    const currentItem = items[index];
+    newItems[index] = {
+      ...currentItem,
+      isDone: !currentItem.isDone,
+      isDirty: true
+    };
+
+    setItems(newItems);
   };
 
   const resetForm = () => {
@@ -103,21 +124,24 @@ const CreateToDo: React.FC = () => {
               </AddButton>
             </InputGroup>
 
-            {items.map((item, index) => (
-              <InputGroup className="mb-1" key={index}>
-                <InputGroup.Checkbox
-                  checked={item.isDone}
-                  name="isDone"
-                  onChange={(e: any) => handleChange(e, item, index)}
-                />
-                <FormControl
-                  value={item.description}
-                  name="description"
-                  placeholder="Task item"
-                  onChange={(e) => handleChange(e, item, index)}
-                />
-              </InputGroup>
-            ))}
+            <ItemsWrapper>
+              {items.map((item, index) => (
+                <ItemWrapper>
+                  <InputGroup className="mb-1" key={index}>
+                    <CheckBox
+                      checked={item.isDone}
+                      onClick={() => handleCheckItem(item, index)}
+                    />
+                    <FormControl
+                      value={item.description}
+                      name="description"
+                      placeholder="Type new task item"
+                      onChange={(e) => handleChange(e, item, index)}
+                    />
+                  </InputGroup>
+                </ItemWrapper>
+              ))}
+            </ItemsWrapper>
           </FormWrapper>
         </Offcanvas.Body>
       </Offcanvas>

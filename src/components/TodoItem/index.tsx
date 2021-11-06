@@ -47,7 +47,7 @@ const TodoItem: React.FC<Props> = ({ todo }) => {
 
       {todo.items.map((item, key) => (
         <ItemWrapper key={key} checked={item.isDone}>
-          <CheckBox />
+          <CheckBox checked={item.isDone} />
           <Text>{item.description}</Text>
         </ItemWrapper>
       ))}
