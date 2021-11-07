@@ -32,7 +32,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --coverage",
+    "test": "react-scripts test --watchAll=false --coverage",
     "lint": "eslint 'src/**/*.{ts,tsx}' --quiet",
     "format": "prettier --config .prettierrc 'src/**/*.{ts,tsx}' --write",
     "eject": "react-scripts eject",
@@ -71,7 +71,9 @@
     "collectCoverageFrom": [
       "<rootDir>/src/**/*.tsx",
       "<rootDir>/src/**/*.ts",
-      "!<rootDir>/src/**/styles.ts"
+      "!<rootDir>/src/**/styles.ts",
+      "!<rootDir>/src/redux/**",
+      "!<rootDir>/src/util/**"
     ]
   },
   "devDependencies": {

@@ -1,5 +1,5 @@
 import React from "react";
-import * as redux from 'react-redux';
+import * as redux from "react-redux";
 import { Provider } from "react-redux";
 import configureStore from "redux-mock-store";
 import { mount, ReactWrapper } from "enzyme";
@@ -13,22 +13,22 @@ describe("<ErrorMessage />", () => {
   let mockDispatch;
 
   const mockState = {
-    error: { message: 'Error message' },
+    error: { message: "Error message" },
     task: { isCreating: true }
-  }
+  };
 
   beforeEach(() => {
-    spyOnUseSelector = jest.spyOn(redux, 'useSelector');
+    spyOnUseSelector = jest.spyOn(redux, "useSelector");
     spyOnUseSelector.mockReturnValue(mockState);
 
-    spyOnUseDispatch = jest.spyOn(redux, 'useDispatch');
+    spyOnUseDispatch = jest.spyOn(redux, "useDispatch");
     mockDispatch = jest.fn();
     spyOnUseDispatch.mockReturnValue(mockDispatch);
 
     wrapper = mount(
-        <Provider store={mockStore()}>
-          <ErrorMessage />
-        </Provider>
+      <Provider store={mockStore()}>
+        <ErrorMessage />
+      </Provider>
     );
   });
 
@@ -44,13 +44,16 @@ describe("<ErrorMessage />", () => {
 
   describe("<PageErrorMessage />", () => {
     beforeEach(() => {
-      spyOnUseSelector = jest.spyOn(redux, 'useSelector');
-      spyOnUseSelector.mockReturnValue({...mockState, task: { isCreating: false }});
+      spyOnUseSelector = jest.spyOn(redux, "useSelector");
+      spyOnUseSelector.mockReturnValue({
+        ...mockState,
+        task: { isCreating: false }
+      });
 
       wrapper = mount(
-          <Provider store={mockStore()}>
-            <ErrorMessage />
-          </Provider>
+        <Provider store={mockStore()}>
+          <ErrorMessage />
+        </Provider>
       );
     });
 

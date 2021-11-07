@@ -8,7 +8,6 @@ const ErrorMessage: React.FC = () => {
   const [visibleToast, setVisibleToast] = useState(false);
   const { error, task } = useSelector((state: RootState) => state);
 
-
   useEffect(() => {
     if (task.isCreating) {
       setVisibleToast(false);

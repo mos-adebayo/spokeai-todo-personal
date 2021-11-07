@@ -1,56 +1,94 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<TodoForm /> should match snapshot for form creation 1`] = `
-<ContextProvider
-  value={
-    Object {
-      "store": Object {
-        "clearActions": [Function],
-        "dispatch": [Function],
-        "getActions": [Function],
-        "getState": [Function],
-        "replaceReducer": [Function],
-        "subscribe": [Function],
-      },
-      "subscription": Object {
-        "addNestedSub": [Function],
-        "getListeners": [Function],
-        "handleChangeWrapper": [Function],
-        "isSubscribed": [Function],
-        "notifyNestedSubs": [Function],
-        "onStateChange": [Function],
-        "trySubscribe": [Function],
-        "tryUnsubscribe": [Function],
-      },
-    }
-  }
->
-  <TaskForm />
-</ContextProvider>
-`;
+.c7 {
+  border: 1px solid #283451;
+  width: 1.5rem;
+  height: 1.5rem;
+  display: inline-block;
+  margin-right: 10px;
+  text-align: center;
+}
 
-exports[`<TodoForm /> should match snapshot for form update 1`] = `
-<ContextProvider
-  value={
+.c6 {
+  border: 1px solid #283451;
+  width: 1.5rem;
+  height: 1.5rem;
+  display: inline-block;
+  margin-right: 10px;
+  text-align: center;
+}
+
+.c6:after {
+  content: " ";
+  display: inline-block;
+  width: 0.5rem;
+  height: 1rem;
+  box-sizing: border-box;
+  -webkit-transform: rotate(40deg);
+  -ms-transform: rotate(40deg);
+  transform: rotate(40deg);
+  border: 0.1rem solid #283451;
+  border-top: 0;
+  border-left: 0;
+}
+
+.c1 {
+  outline: none;
+  border: none;
+  background: linear-gradient( 77.07deg, rgb(69,183,204) 0%, rgb(75,207,187) 100% );
+}
+
+.c1:focus {
+  box-shadow: none;
+}
+
+.c0 {
+  margin: 20px 0;
+}
+
+.c0 .form-control:active,
+.c0 .form-control:focus {
+  box-shadow: none;
+  border-color: #5f9ea0;
+}
+
+.c4 {
+  border-bottom: 1px solid #dfdfdf;
+  margin: 0 -16px;
+  padding: 10px 16px 8px;
+}
+
+.c4 .c5 {
+  margin-right: 5px;
+}
+
+.c4:first-of-type {
+  border-top: 1px solid #dfdfdf;
+}
+
+.c2 {
+  margin-top: 15px;
+}
+
+.c2 .form-control {
+  height: 1.5rem;
+  border: none;
+}
+
+.c2 .c3 {
+  margin: 0;
+}
+
+<Provider
+  store={
     Object {
-      "store": Object {
-        "clearActions": [Function],
-        "dispatch": [Function],
-        "getActions": [Function],
-        "getState": [Function],
-        "replaceReducer": [Function],
-        "subscribe": [Function],
-      },
-      "subscription": Object {
-        "addNestedSub": [Function],
-        "getListeners": [Function],
-        "handleChangeWrapper": [Function],
-        "isSubscribed": [Function],
-        "notifyNestedSubs": [Function],
-        "onStateChange": [Function],
-        "trySubscribe": [Function],
-        "tryUnsubscribe": [Function],
-      },
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
     }
   }
 >
@@ -71,6 +109,254 @@ exports[`<TodoForm /> should match snapshot for form update 1`] = `
         "title": "Title",
       }
     }
-  />
-</ContextProvider>
+  >
+    <styled.div>
+      <div
+        className="c0"
+      >
+        <InputGroup
+          className="mb-2"
+        >
+          <div
+            className="mb-2 input-group"
+          >
+            <FormControl
+              onChange={[Function]}
+              placeholder="Title"
+              type="text"
+              value="Title"
+            >
+              <input
+                className="form-control"
+                onChange={[Function]}
+                placeholder="Title"
+                type="text"
+                value="Title"
+              />
+            </FormControl>
+            <Styled(Button)
+              onClick={[Function]}
+            >
+              <Button
+                active={false}
+                className="c1"
+                disabled={false}
+                onClick={[Function]}
+                variant="primary"
+              >
+                <button
+                  className="c1 btn btn-primary"
+                  disabled={false}
+                  onClick={[Function]}
+                  type="button"
+                >
+                  Save
+                </button>
+              </Button>
+            </Styled(Button)>
+          </div>
+        </InputGroup>
+        <styled.div
+          editMode={true}
+        >
+          <div
+            className="c2"
+          >
+            <styled.div
+              key="0"
+            >
+              <div
+                className="c3 c4"
+              >
+                <InputGroup
+                  className="mb-1"
+                  key="0"
+                >
+                  <div
+                    className="mb-1 input-group"
+                  >
+                    <styled.span
+                      checked={true}
+                      onClick={[Function]}
+                    >
+                      <span
+                        checked={true}
+                        className="c5 c6"
+                        onClick={[Function]}
+                      />
+                    </styled.span>
+                    <FormControl
+                      name="description"
+                      onChange={[Function]}
+                      placeholder="Type new task item"
+                      value="description 1"
+                    >
+                      <input
+                        className="form-control"
+                        name="description"
+                        onChange={[Function]}
+                        placeholder="Type new task item"
+                        value="description 1"
+                      />
+                    </FormControl>
+                  </div>
+                </InputGroup>
+              </div>
+            </styled.div>
+            <styled.div
+              key="1"
+            >
+              <div
+                className="c3 c4"
+              >
+                <InputGroup
+                  className="mb-1"
+                  key="1"
+                >
+                  <div
+                    className="mb-1 input-group"
+                  >
+                    <styled.span
+                      checked={false}
+                      onClick={[Function]}
+                    >
+                      <span
+                        checked={false}
+                        className="c5 c7"
+                        onClick={[Function]}
+                      />
+                    </styled.span>
+                    <FormControl
+                      name="description"
+                      onChange={[Function]}
+                      placeholder="Type new task item"
+                      value="description 2"
+                    >
+                      <input
+                        className="form-control"
+                        name="description"
+                        onChange={[Function]}
+                        placeholder="Type new task item"
+                        value="description 2"
+                      />
+                    </FormControl>
+                  </div>
+                </InputGroup>
+              </div>
+            </styled.div>
+            <styled.div
+              key="2"
+            >
+              <div
+                className="c3 c4"
+              >
+                <InputGroup
+                  className="mb-1"
+                  key="2"
+                >
+                  <div
+                    className="mb-1 input-group"
+                  >
+                    <styled.span
+                      checked={false}
+                      onClick={[Function]}
+                    >
+                      <span
+                        checked={false}
+                        className="c5 c7"
+                        onClick={[Function]}
+                      />
+                    </styled.span>
+                    <FormControl
+                      name="description"
+                      onChange={[Function]}
+                      placeholder="Type new task item"
+                      value=""
+                    >
+                      <input
+                        className="form-control"
+                        name="description"
+                        onChange={[Function]}
+                        placeholder="Type new task item"
+                        value=""
+                      />
+                    </FormControl>
+                  </div>
+                </InputGroup>
+              </div>
+            </styled.div>
+          </div>
+        </styled.div>
+        <ToastContainer
+          className="p-3"
+          position="top-end"
+        >
+          <div
+            className="toast-container position-absolute top-0 end-0 p-3"
+          >
+            <Toast
+              autohide={true}
+              bg="light"
+              delay={3000}
+              onClose={[Function]}
+              show={false}
+            >
+              <ToastFade
+                in={false}
+                unmountOnExit={true}
+              >
+                <Fade
+                  appear={false}
+                  in={false}
+                  mountOnEnter={false}
+                  timeout={300}
+                  transitionClasses={
+                    Object {
+                      "entering": "showing",
+                      "exiting": "showing show",
+                    }
+                  }
+                  unmountOnExit={true}
+                >
+                  <ForwardRef
+                    addEndListener={[Function]}
+                    appear={false}
+                    childRef={null}
+                    in={false}
+                    mountOnEnter={false}
+                    onEnter={[Function]}
+                    timeout={300}
+                    unmountOnExit={true}
+                  >
+                    <Transition
+                      addEndListener={[Function]}
+                      appear={false}
+                      enter={true}
+                      exit={true}
+                      in={false}
+                      mountOnEnter={false}
+                      nodeRef={
+                        Object {
+                          "current": null,
+                        }
+                      }
+                      onEnter={[Function]}
+                      onEntered={[Function]}
+                      onEntering={[Function]}
+                      onExit={[Function]}
+                      onExited={[Function]}
+                      onExiting={[Function]}
+                      timeout={300}
+                      unmountOnExit={true}
+                    />
+                  </ForwardRef>
+                </Fade>
+              </ToastFade>
+            </Toast>
+          </div>
+        </ToastContainer>
+      </div>
+    </styled.div>
+  </TaskForm>
+</Provider>
 `;

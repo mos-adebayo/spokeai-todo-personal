@@ -21,6 +21,7 @@ const Home: React.FC = () => {
   const dispatch = useDispatch();
   const { tasks, loading } = useSelector((state: RootState) => state.tasks);
 
+
   useEffect(() => {
     dispatch(fetchTasksRequest());
   }, []);
