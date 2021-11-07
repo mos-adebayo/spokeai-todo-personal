@@ -1,4 +1,4 @@
-# Project Name
+# Simple To-DO List
 
 A simple to-do list web app
 
