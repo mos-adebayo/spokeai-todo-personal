@@ -1,0 +1,163 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<EmptyPage /> should match snapshot 1`] = `
+.c0 {
+  width: 100%;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.c1 {
+  cursor: pointer;
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+}
+
+@media screen and (min-width:768px) {
+  .c0 {
+    width: 80%;
+  }
+}
+
+@media screen and (min-width:992px) {
+  .c0 {
+    width: 60%;
+  }
+}
+
+@media screen and (min-width:1200px) {
+  .c0 {
+    width: 50%;
+  }
+}
+
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <EmptyPage>
+    <styled.div>
+      <div
+        className="c0"
+      >
+        <Alert
+          closeLabel="Close alert"
+          show={true}
+          transition={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "defaultProps": Object {
+                "appear": false,
+                "in": false,
+                "mountOnEnter": false,
+                "timeout": 300,
+                "unmountOnExit": false,
+              },
+              "render": [Function],
+            }
+          }
+          variant="info"
+        >
+          <Fade
+            appear={false}
+            in={true}
+            mountOnEnter={false}
+            timeout={300}
+            unmountOnExit={true}
+          >
+            <ForwardRef
+              addEndListener={[Function]}
+              appear={false}
+              childRef={null}
+              in={true}
+              mountOnEnter={false}
+              onEnter={[Function]}
+              timeout={300}
+              unmountOnExit={true}
+            >
+              <Transition
+                addEndListener={[Function]}
+                appear={false}
+                enter={true}
+                exit={true}
+                in={true}
+                mountOnEnter={false}
+                nodeRef={
+                  Object {
+                    "current": .c0 {
+  cursor: pointer;
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+}
+
+@media screen and (min-width:768px) {
+
+}
+
+@media screen and (min-width:992px) {
+
+}
+
+@media screen and (min-width:1200px) {
+
+}
+
+<div
+                      class="fade alert alert-info show"
+                      role="alert"
+                    >
+                      <p>
+                        Your Todos will appear here!
+                        <span
+                          class="c0"
+                        >
+                          Get started
+                        </span>
+                      </p>
+                    </div>,
+                  }
+                }
+                onEnter={[Function]}
+                onEntered={[Function]}
+                onEntering={[Function]}
+                onExit={[Function]}
+                onExited={[Function]}
+                onExiting={[Function]}
+                timeout={300}
+                unmountOnExit={true}
+              >
+                <div
+                  className="fade alert alert-info show"
+                  role="alert"
+                >
+                  <p>
+                    Your Todos will appear here!
+                    <styled.span
+                      onClick={[Function]}
+                    >
+                      <span
+                        className="c1"
+                        onClick={[Function]}
+                      >
+                        Get started
+                      </span>
+                    </styled.span>
+                  </p>
+                </div>
+              </Transition>
+            </ForwardRef>
+          </Fade>
+        </Alert>
+      </div>
+    </styled.div>
+  </EmptyPage>
+</Provider>
+`;

@@ -1,0 +1,262 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ErrorMessage /> <PageErrorMessage /> should match snapshot of error message on page 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <ErrorMessage>
+    <ToastContainer
+      className="p-3"
+      position="top-end"
+    >
+      <div
+        className="toast-container position-absolute top-0 end-0 p-3"
+      >
+        <Toast
+          bg="danger"
+          onClose={[Function]}
+          show={true}
+        >
+          <ToastFade
+            in={true}
+            unmountOnExit={true}
+          >
+            <Fade
+              appear={false}
+              in={true}
+              mountOnEnter={false}
+              timeout={300}
+              transitionClasses={
+                Object {
+                  "entering": "showing",
+                  "exiting": "showing show",
+                }
+              }
+              unmountOnExit={true}
+            >
+              <ForwardRef
+                addEndListener={[Function]}
+                appear={false}
+                childRef={null}
+                in={true}
+                mountOnEnter={false}
+                onEnter={[Function]}
+                timeout={300}
+                unmountOnExit={true}
+              >
+                <Transition
+                  addEndListener={[Function]}
+                  appear={false}
+                  enter={true}
+                  exit={true}
+                  in={true}
+                  mountOnEnter={false}
+                  nodeRef={
+                    Object {
+                      "current": <div
+                        aria-atomic="true"
+                        aria-live="assertive"
+                        class="fade toast bg-danger show showing"
+                        role="alert"
+                      >
+                        <div
+                          class="toast-header"
+                        >
+                          <strong
+                            class="me-auto"
+                          >
+                            Error!
+                          </strong>
+                          <button
+                            aria-label="Close"
+                            class="btn-close"
+                            data-dismiss="toast"
+                            type="button"
+                          />
+                        </div>
+                        <div
+                          class="text-white toast-body"
+                        >
+                          Error message
+                        </div>
+                      </div>,
+                    }
+                  }
+                  onEnter={[Function]}
+                  onEntered={[Function]}
+                  onEntering={[Function]}
+                  onExit={[Function]}
+                  onExited={[Function]}
+                  onExiting={[Function]}
+                  timeout={300}
+                  unmountOnExit={true}
+                >
+                  <div
+                    aria-atomic="true"
+                    aria-live="assertive"
+                    className="fade toast bg-danger show showing"
+                    role="alert"
+                  >
+                    <ToastHeader
+                      closeButton={true}
+                      closeLabel="Close"
+                    >
+                      <div
+                        className="toast-header"
+                      >
+                        <strong
+                          className="me-auto"
+                        >
+                          Error!
+                        </strong>
+                        <CloseButton
+                          aria-label="Close"
+                          data-dismiss="toast"
+                          onClick={[Function]}
+                        >
+                          <button
+                            aria-label="Close"
+                            className="btn-close"
+                            data-dismiss="toast"
+                            onClick={[Function]}
+                            type="button"
+                          />
+                        </CloseButton>
+                      </div>
+                    </ToastHeader>
+                    <ToastBody
+                      className="text-white"
+                    >
+                      <div
+                        className="text-white toast-body"
+                      >
+                        Error message
+                      </div>
+                    </ToastBody>
+                  </div>
+                </Transition>
+              </ForwardRef>
+            </Fade>
+          </ToastFade>
+        </Toast>
+      </div>
+    </ToastContainer>
+  </ErrorMessage>
+</Provider>
+`;
+
+exports[`<ErrorMessage /> <TodoFormErrorMessage /> should match snapshot of error from Todo from 1`] = `
+.c0 {
+  text-align: center;
+}
+
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <ErrorMessage>
+    <Alert
+      closeLabel="Close alert"
+      show={true}
+      transition={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "appear": false,
+            "in": false,
+            "mountOnEnter": false,
+            "timeout": 300,
+            "unmountOnExit": false,
+          },
+          "render": [Function],
+        }
+      }
+      variant="danger"
+    >
+      <Fade
+        appear={false}
+        in={true}
+        mountOnEnter={false}
+        timeout={300}
+        unmountOnExit={true}
+      >
+        <ForwardRef
+          addEndListener={[Function]}
+          appear={false}
+          childRef={null}
+          in={true}
+          mountOnEnter={false}
+          onEnter={[Function]}
+          timeout={300}
+          unmountOnExit={true}
+        >
+          <Transition
+            addEndListener={[Function]}
+            appear={false}
+            enter={true}
+            exit={true}
+            in={true}
+            mountOnEnter={false}
+            nodeRef={
+              Object {
+                "current": .c0 {
+  text-align: center;
+}
+
+<div
+                  class="fade alert alert-danger show"
+                  role="alert"
+                >
+                  <p
+                    class="c0"
+                  >
+                    Error message
+                  </p>
+                </div>,
+              }
+            }
+            onEnter={[Function]}
+            onEntered={[Function]}
+            onEntering={[Function]}
+            onExit={[Function]}
+            onExited={[Function]}
+            onExiting={[Function]}
+            timeout={300}
+            unmountOnExit={true}
+          >
+            <div
+              className="fade alert alert-danger show"
+              role="alert"
+            >
+              <styled.p>
+                <p
+                  className="c0"
+                >
+                  Error message
+                </p>
+              </styled.p>
+            </div>
+          </Transition>
+        </ForwardRef>
+      </Fade>
+    </Alert>
+  </ErrorMessage>
+</Provider>
+`;

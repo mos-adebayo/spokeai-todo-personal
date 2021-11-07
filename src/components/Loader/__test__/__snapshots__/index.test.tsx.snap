@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Loader /> should match snapshot when loading is false 1`] = `<Fragment />`;
+
+exports[`<Loader /> should match snapshot when loading is true 1`] = `
+<styled.div>
+  <Spinner
+    animation="border"
+    role="status"
+  >
+    <span
+      className="visually-hidden"
+    >
+      Loading...
+    </span>
+  </Spinner>
+</styled.div>
+`;

@@ -1,3 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<AppRouter /> should match snapshots 1`] = `ShallowWrapper {}`;
+exports[`<AppRouter /> should match snapshots 1`] = `
+<BrowserRouter>
+  <Switch>
+    <Route
+      component={[Function]}
+      exact={true}
+      path="/"
+    />
+    <Route
+      component={[Function]}
+      exact={true}
+      path="/todo/:id"
+    />
+    <Redirect
+      to="/"
+    />
+  </Switch>
+</BrowserRouter>
+`;

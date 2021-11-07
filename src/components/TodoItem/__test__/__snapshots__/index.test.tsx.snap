@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TodoItem /> should match snapshot 1`] = `
+<styled.div
+  completed={false}
+>
+  <styled.div>
+    <styled.h4>
+      Title
+    </styled.h4>
+    <ProgressBar
+      animated={false}
+      isChild={false}
+      label="0%"
+      max={100}
+      min={0}
+      now={0}
+      striped={true}
+      variant="danger"
+      visuallyHidden={false}
+    />
+  </styled.div>
+  <styled.div
+    checked={true}
+    key="0"
+  >
+    <styled.span
+      checked={true}
+    />
+    <styled.span>
+      description 1
+    </styled.span>
+  </styled.div>
+  <styled.div
+    checked={false}
+    key="1"
+  >
+    <styled.span
+      checked={false}
+    />
+    <styled.span>
+      description 2
+    </styled.span>
+  </styled.div>
+</styled.div>
+`;

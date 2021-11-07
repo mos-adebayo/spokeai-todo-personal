@@ -15,7 +15,7 @@ const EmptyPage: React.FC = () => {
     <Wrapper>
       <Alert variant="info">
         <p>
-          Your Todos will appear here!{" "}
+          Your Todos will appear here!
           <LinkText onClick={handleStartCreation}>Get started</LinkText>
         </p>
       </Alert>

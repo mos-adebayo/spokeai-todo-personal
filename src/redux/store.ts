@@ -5,7 +5,6 @@ import { rootSaga } from "./sagas/root";
 
 const sagaMiddleware = createSagaMiddleware();
 
-// TODO apply logger only for dev env
 const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
 
 sagaMiddleware.run(rootSaga);

@@ -32,7 +32,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --coverage",
     "lint": "eslint 'src/**/*.{ts,tsx}' --quiet",
     "format": "prettier --config .prettierrc 'src/**/*.{ts,tsx}' --write",
     "eject": "react-scripts eject",
@@ -56,11 +56,35 @@
       "last 1 safari version"
     ]
   },
+  "jest": {
+    "transform": {
+      "^.+\\.(ts|tsx)$": "ts-jest"
+    },
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "coverageReporters": [
+      "text-summary",
+      "text",
+      "html"
+    ],
+    "collectCoverageFrom": [
+      "<rootDir>/src/**/*.tsx",
+      "<rootDir>/src/**/*.ts",
+      "!<rootDir>/src/**/styles.ts"
+    ]
+  },
   "devDependencies": {
     "@types/enzyme-adapter-react-16": "^1.0.6",
+    "@types/redux-mock-store": "^1.0.3",
     "@types/styled-components": "^5.1.15",
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.5",
     "enzyme-adapter-react-16": "^1.15.6",
+    "enzyme-to-json": "^3.6.2",
     "eslint-plugin-prettier": "^4.0.0",
-    "prettier": "^2.4.1"
+    "jest-styled-components": "^7.0.5",
+    "prettier": "^2.4.1",
+    "redux-mock-store": "^1.5.4",
+    "ts-jest": "^27.0.7"
   }
 }
