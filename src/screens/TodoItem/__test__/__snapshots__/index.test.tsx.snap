@@ -1,30 +1,553 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<TodoItem /> should match snapshot for form creation 1`] = `
-<ContextProvider
-  value={
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 45px 20px;
+  height: 100px;
+  margin-bottom: 25px;
+  font-family: "Mochiy Pop One",sans-serif;
+  background: linear-gradient( 77.07deg, rgb(69,183,204) 0%, rgb(75,207,187) 100% );
+}
+
+.c9 {
+  border: 1px solid #283451;
+  width: 1.5rem;
+  height: 1.5rem;
+  display: inline-block;
+  margin-right: 10px;
+  text-align: center;
+}
+
+.c8 {
+  border: 1px solid #283451;
+  width: 1.5rem;
+  height: 1.5rem;
+  display: inline-block;
+  margin-right: 10px;
+  text-align: center;
+}
+
+.c8:after {
+  content: " ";
+  display: inline-block;
+  width: 0.5rem;
+  height: 1rem;
+  box-sizing: border-box;
+  -webkit-transform: rotate(40deg);
+  -ms-transform: rotate(40deg);
+  transform: rotate(40deg);
+  border: 0.1rem solid #283451;
+  border-top: 0;
+  border-left: 0;
+}
+
+.c3 {
+  outline: none;
+  border: none;
+  background: linear-gradient( 77.07deg, rgb(69,183,204) 0%, rgb(75,207,187) 100% );
+}
+
+.c3:focus {
+  box-shadow: none;
+}
+
+.c10 {
+  position: absolute;
+  right: 50px;
+  bottom: 50px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: #ffffff;
+  cursor: pointer;
+  width: 100px;
+  height: 100px;
+  font-size: 80px;
+  border-radius: 50%;
+  background: linear-gradient( 77.07deg, rgb(69,183,204) 0%, rgb(75,207,187) 100% );
+  box-shadow: rgb(52 58 64 / 6%) 3px 1px 13px 0;
+}
+
+.c2 {
+  margin: 20px 0;
+}
+
+.c2 .form-control:active,
+.c2 .form-control:focus {
+  box-shadow: none;
+  border-color: #5f9ea0;
+}
+
+.c6 {
+  border-bottom: 1px solid #dfdfdf;
+  margin: 0 -16px;
+  padding: 10px 16px 8px;
+}
+
+.c6 .c7 {
+  margin-right: 5px;
+}
+
+.c6:first-of-type {
+  border-top: 1px solid #dfdfdf;
+}
+
+.c4 {
+  margin-top: 15px;
+}
+
+.c4 .form-control {
+  height: 1.5rem;
+  border: none;
+}
+
+.c4 .c5 {
+  margin: 0;
+}
+
+.c1 {
+  width: 100%;
+  margin: 0 auto;
+  background: #fff;
+  height: calc(100vh - 145px);
+}
+
+@media screen and (max-width:767px) {
+  .c10 {
+    width: 80px;
+    height: 80px;
+    font-size: 60px;
+  }
+}
+
+@media screen and (min-width:576px) {
+  .c1 {
+    width: 95%;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c1 {
+    width: 70%;
+  }
+}
+
+@media screen and (min-width:1200px) {
+  .c1 {
+    width: 50%;
+  }
+}
+
+<Provider
+  store={
     Object {
-      "store": Object {
-        "clearActions": [Function],
-        "dispatch": [Function],
-        "getActions": [Function],
-        "getState": [Function],
-        "replaceReducer": [Function],
-        "subscribe": [Function],
-      },
-      "subscription": Object {
-        "addNestedSub": [Function],
-        "getListeners": [Function],
-        "handleChangeWrapper": [Function],
-        "isSubscribed": [Function],
-        "notifyNestedSubs": [Function],
-        "onStateChange": [Function],
-        "trySubscribe": [Function],
-        "tryUnsubscribe": [Function],
-      },
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
     }
   }
 >
-  <TodoItem />
-</ContextProvider>
+  <BrowserRouter>
+    <Router
+      history={
+        Object {
+          "action": "POP",
+          "block": [Function],
+          "createHref": [Function],
+          "go": [Function],
+          "goBack": [Function],
+          "goForward": [Function],
+          "length": 1,
+          "listen": [Function],
+          "location": Object {
+            "hash": "",
+            "pathname": "/",
+            "search": "",
+            "state": undefined,
+          },
+          "push": [Function],
+          "replace": [Function],
+        }
+      }
+    >
+      <TodoItem>
+        <AppWrapper>
+          <Header>
+            <styled.div>
+              <div
+                className="c0"
+              >
+                <Link
+                  to="/"
+                >
+                  <LinkAnchor
+                    href="/"
+                    navigate={[Function]}
+                  >
+                    <a
+                      href="/"
+                      onClick={[Function]}
+                    >
+                      <h3>
+                        Spoke.ai
+                      </h3>
+                    </a>
+                  </LinkAnchor>
+                </Link>
+              </div>
+            </styled.div>
+          </Header>
+          <ErrorMessage />
+          <Container
+            fluid={false}
+          >
+            <div
+              className="container"
+            >
+              <styled.div>
+                <div
+                  className="c1"
+                >
+                  <Index />
+                  <TaskForm
+                    task={
+                      Object {
+                        "id": "1234567890",
+                        "items": Array [
+                          Object {
+                            "description": "description 1",
+                            "isDone": true,
+                          },
+                          Object {
+                            "description": "description 2",
+                            "isDone": false,
+                          },
+                        ],
+                        "title": "Title",
+                      }
+                    }
+                  >
+                    <styled.div>
+                      <div
+                        className="c2"
+                      >
+                        <InputGroup
+                          className="mb-2"
+                        >
+                          <div
+                            className="mb-2 input-group"
+                          >
+                            <FormControl
+                              onChange={[Function]}
+                              placeholder="Title"
+                              type="text"
+                              value="Title"
+                            >
+                              <input
+                                className="form-control"
+                                onChange={[Function]}
+                                placeholder="Title"
+                                type="text"
+                                value="Title"
+                              />
+                            </FormControl>
+                            <Styled(Button)
+                              onClick={[Function]}
+                            >
+                              <Button
+                                active={false}
+                                className="c3"
+                                disabled={false}
+                                onClick={[Function]}
+                                variant="primary"
+                              >
+                                <button
+                                  className="c3 btn btn-primary"
+                                  disabled={false}
+                                  onClick={[Function]}
+                                  type="button"
+                                >
+                                  Save
+                                </button>
+                              </Button>
+                            </Styled(Button)>
+                          </div>
+                        </InputGroup>
+                        <styled.div
+                          editMode={true}
+                        >
+                          <div
+                            className="c4"
+                          >
+                            <styled.div
+                              key="0"
+                            >
+                              <div
+                                className="c5 c6"
+                              >
+                                <InputGroup
+                                  className="mb-1"
+                                  key="0"
+                                >
+                                  <div
+                                    className="mb-1 input-group"
+                                  >
+                                    <styled.span
+                                      checked={true}
+                                      onClick={[Function]}
+                                    >
+                                      <span
+                                        checked={true}
+                                        className="c7 c8"
+                                        onClick={[Function]}
+                                      />
+                                    </styled.span>
+                                    <FormControl
+                                      name="description"
+                                      onChange={[Function]}
+                                      placeholder="Type new task item"
+                                      value="description 1"
+                                    >
+                                      <input
+                                        className="form-control"
+                                        name="description"
+                                        onChange={[Function]}
+                                        placeholder="Type new task item"
+                                        value="description 1"
+                                      />
+                                    </FormControl>
+                                  </div>
+                                </InputGroup>
+                              </div>
+                            </styled.div>
+                            <styled.div
+                              key="1"
+                            >
+                              <div
+                                className="c5 c6"
+                              >
+                                <InputGroup
+                                  className="mb-1"
+                                  key="1"
+                                >
+                                  <div
+                                    className="mb-1 input-group"
+                                  >
+                                    <styled.span
+                                      checked={false}
+                                      onClick={[Function]}
+                                    >
+                                      <span
+                                        checked={false}
+                                        className="c7 c9"
+                                        onClick={[Function]}
+                                      />
+                                    </styled.span>
+                                    <FormControl
+                                      name="description"
+                                      onChange={[Function]}
+                                      placeholder="Type new task item"
+                                      value="description 2"
+                                    >
+                                      <input
+                                        className="form-control"
+                                        name="description"
+                                        onChange={[Function]}
+                                        placeholder="Type new task item"
+                                        value="description 2"
+                                      />
+                                    </FormControl>
+                                  </div>
+                                </InputGroup>
+                              </div>
+                            </styled.div>
+                            <styled.div
+                              key="2"
+                            >
+                              <div
+                                className="c5 c6"
+                              >
+                                <InputGroup
+                                  className="mb-1"
+                                  key="2"
+                                >
+                                  <div
+                                    className="mb-1 input-group"
+                                  >
+                                    <styled.span
+                                      checked={false}
+                                      onClick={[Function]}
+                                    >
+                                      <span
+                                        checked={false}
+                                        className="c7 c9"
+                                        onClick={[Function]}
+                                      />
+                                    </styled.span>
+                                    <FormControl
+                                      name="description"
+                                      onChange={[Function]}
+                                      placeholder="Type new task item"
+                                      value=""
+                                    >
+                                      <input
+                                        className="form-control"
+                                        name="description"
+                                        onChange={[Function]}
+                                        placeholder="Type new task item"
+                                        value=""
+                                      />
+                                    </FormControl>
+                                  </div>
+                                </InputGroup>
+                              </div>
+                            </styled.div>
+                          </div>
+                        </styled.div>
+                        <ToastContainer
+                          className="p-3"
+                          position="top-end"
+                        >
+                          <div
+                            className="toast-container position-absolute top-0 end-0 p-3"
+                          >
+                            <Toast
+                              autohide={true}
+                              bg="light"
+                              delay={3000}
+                              onClose={[Function]}
+                              show={false}
+                            >
+                              <ToastFade
+                                in={false}
+                                unmountOnExit={true}
+                              >
+                                <Fade
+                                  appear={false}
+                                  in={false}
+                                  mountOnEnter={false}
+                                  timeout={300}
+                                  transitionClasses={
+                                    Object {
+                                      "entering": "showing",
+                                      "exiting": "showing show",
+                                    }
+                                  }
+                                  unmountOnExit={true}
+                                >
+                                  <ForwardRef
+                                    addEndListener={[Function]}
+                                    appear={false}
+                                    childRef={null}
+                                    in={false}
+                                    mountOnEnter={false}
+                                    onEnter={[Function]}
+                                    timeout={300}
+                                    unmountOnExit={true}
+                                  >
+                                    <Transition
+                                      addEndListener={[Function]}
+                                      appear={false}
+                                      enter={true}
+                                      exit={true}
+                                      in={false}
+                                      mountOnEnter={false}
+                                      nodeRef={
+                                        Object {
+                                          "current": null,
+                                        }
+                                      }
+                                      onEnter={[Function]}
+                                      onEntered={[Function]}
+                                      onEntering={[Function]}
+                                      onExit={[Function]}
+                                      onExited={[Function]}
+                                      onExiting={[Function]}
+                                      timeout={300}
+                                      unmountOnExit={true}
+                                    />
+                                  </ForwardRef>
+                                </Fade>
+                              </ToastFade>
+                            </Toast>
+                          </div>
+                        </ToastContainer>
+                      </div>
+                    </styled.div>
+                  </TaskForm>
+                </div>
+              </styled.div>
+            </div>
+          </Container>
+          <CreateToDo>
+            <Offcanvas
+              autoFocus={true}
+              backdrop={true}
+              enforceFocus={true}
+              keyboard={true}
+              onHide={[Function]}
+              placement="end"
+              restoreFocus={true}
+              scroll={false}
+              show={false}
+            >
+              <Modal
+                autoFocus={true}
+                backdrop={true}
+                backdropTransition={[Function]}
+                enforceFocus={true}
+                keyboard={true}
+                manager={
+                  BootstrapModalManager {
+                    "handleContainerOverflow": true,
+                    "isRTL": false,
+                    "modals": Array [],
+                  }
+                }
+                onEnter={[Function]}
+                onExited={[Function]}
+                onHide={[Function]}
+                renderBackdrop={[Function]}
+                renderDialog={[Function]}
+                restoreFocus={true}
+                show={false}
+                transition={[Function]}
+              />
+            </Offcanvas>
+            <styled.div
+              onClick={[Function]}
+            >
+              <div
+                className="c10"
+                onClick={[Function]}
+              >
+                +
+              </div>
+            </styled.div>
+          </CreateToDo>
+        </AppWrapper>
+      </TodoItem>
+    </Router>
+  </BrowserRouter>
+</Provider>
 `;

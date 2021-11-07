@@ -73,7 +73,8 @@
       "<rootDir>/src/**/*.ts",
       "!<rootDir>/src/**/styles.ts",
       "!<rootDir>/src/redux/**",
-      "!<rootDir>/src/util/**"
+      "!<rootDir>/src/util/**",
+      "!<rootDir>/src/types/**"
     ]
   },
   "devDependencies": {
