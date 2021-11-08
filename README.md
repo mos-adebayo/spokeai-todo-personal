@@ -4,6 +4,9 @@ A simple to-do list web app
 
 ## How to run the Application
 
+### Install NPM packages 
+## `npm i`
+
 ### Start the JSON-Server
 ### `npm run server`
 
